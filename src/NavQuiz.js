@@ -2,20 +2,13 @@ import React from "react";
 import {Navbar, NavbarBrand, NavbarMenuToggle, NavbarMenuItem, NavbarMenu, NavbarContent, NavbarItem, Link, Button} from "@nextui-org/react";
 import logo from './logo.svg';
 
-function Nav() {
+function NavQuiz() {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
     const menuItems = [
-      "Profile",
-      "Dashboard",
-      "Activity",
-      "Analytics",
-      "System",
-      "Deployments",
-      "My Settings",
-      "Team Settings",
-      "Help & Feedback",
-      "Log Out",
+      "Test",
+      "Personality Types",
+      "MBTI Characters",
     ];
   
     return (
@@ -40,10 +33,15 @@ function Nav() {
           </NavbarBrand>
           <NavbarItem>
             <Link color="foreground" href="#">
-                Test
+                Home
             </Link>
           </NavbarItem>
           <NavbarItem isActive>
+            <Link color="foreground" href="#">
+                Test
+            </Link>
+          </NavbarItem>
+          <NavbarItem>
             <Link href="#" aria-current="page">
                 Personality Types
             </Link>
