@@ -4,7 +4,7 @@ import NavApp from './NavApp.js';
 function App() {
   return (
     <div className="App">
-      <Nav></Nav>
+      <NavApp></NavApp>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
