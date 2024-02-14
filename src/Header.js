@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import {Navbar, NavbarBrand, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, NavbarContent, NavbarItem, Link, Button} from "@nextui-org/react";
 
 function Header(props) {
   
-    const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
   
     const menuItems = [
       "Test",
