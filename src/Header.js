@@ -1,11 +1,7 @@
 import React from "react";
 import {Navbar, NavbarBrand, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, NavbarContent, NavbarItem, Link, Button} from "@nextui-org/react";
 
-function Header() {
-
-    const [currentPage, setCurrentPage] = React.useState('home');
-  
-    const handleNavClick = (page) => setCurrentPage(page);
+function Header(props) {
   
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   
@@ -35,23 +31,23 @@ function Header() {
             <NavbarBrand>
                 <p className="font-bold text-inherit">PersonalityQuiz</p>
             </NavbarBrand>
-            <NavbarItem isActive={currentPage === 'home'}>
-                <Link color={currentPage === 'home' ? "" : "foreground"} onPress={() => handleNavClick('home')} href="home">
+            <NavbarItem isActive={props.currentPage === 'home'}>
+                <Link color={props.currentPage === 'home' ? "" : "foreground"} onPress={() => props.handleNavClick('home')} href="home">
                     Home
                 </Link>
             </NavbarItem>
-            <NavbarItem isActive={currentPage === 'quiz'}>
-                <Link color={currentPage === 'quiz' ? "" : "foreground"} onPress={() => handleNavClick('quiz')} href="quiz">
+            <NavbarItem isActive={props.currentPage === 'quiz'}>
+                <Link color={props.currentPage === 'quiz' ? "" : "foreground"} onPress={() => props.handleNavClick('quiz')} href="quiz">
                     Test
                 </Link>
             </NavbarItem>
-            <NavbarItem isActive={currentPage === 'mbti'}>
-                <Link color={currentPage === 'mbti' ? "" : "foreground"} onPress={() => handleNavClick('mbti')} href="mbti">
+            <NavbarItem isActive={props.currentPage === 'mbti'}>
+                <Link color={props.currentPage === 'mbti' ? "" : "foreground"} onPress={() => props.handleNavClick('mbti')} href="mbti">
                     Personality Types
                 </Link>
             </NavbarItem>
-            <NavbarItem isActive={currentPage === 'characters'}>
-                <Link color={currentPage === 'characters' ? "" : "foreground"} onPress={() => handleNavClick('characters')} href="characters">
+            <NavbarItem isActive={props.currentPage === 'characters'}>
+                <Link color={props.currentPage === 'characters' ? "" : "foreground"} onPress={() => props.handleNavClick('characters')} href="characters">
                     MBTI Characters
                 </Link>
             </NavbarItem>
