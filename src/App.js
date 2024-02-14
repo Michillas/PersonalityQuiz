@@ -2,16 +2,12 @@ import React from "react";
 import {Navbar, NavbarBrand, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, NavbarContent, NavbarItem, Link, Button} from "@nextui-org/react";
 
 import logo from './logo.svg';
-import HomePage from './pages/home/HomePage.js'
-import QuizPage from './pages/quiz/QuizPage.js'
-import MbtiPage from './pages/mbti/MbtiPage.js'
-import CharactersPage from './pages/characters/CharactersPage.js'
+import Content from "./Content.js";
 
 function App() {
   const [currentPage, setCurrentPage] = React.useState('home');
   
   const handleNavClick = (page) => {
-    console.log("page: " + page)
     setCurrentPage(page);
   };
 
@@ -44,23 +40,23 @@ function App() {
           <NavbarBrand>
             <p className="font-bold text-inherit">PersonalityQuiz</p>
           </NavbarBrand>
-          <NavbarItem onClick={() => handleNavClick('home')} isActive={currentPage === 'home'}>
-            <Link color={currentPage === 'home' ? "" : "foreground"} href="home">
+          <NavbarItem isActive={currentPage === 'home'}>
+            <Link color={currentPage === 'home' ? "" : "foreground"} onPress={() => handleNavClick('home')} href="home">
                 Home
             </Link>
           </NavbarItem>
-          <NavbarItem onClick={() => handleNavClick('quiz')} isActive={currentPage === 'quiz'}>
-            <Link color={currentPage === 'quiz' ? "" : "foreground"}  href="quiz">
+          <NavbarItem isActive={currentPage === 'quiz'}>
+            <Link color={currentPage === 'quiz' ? "" : "foreground"} onPress={() => handleNavClick('quiz')} href="quiz">
                 Test
             </Link>
           </NavbarItem>
-          <NavbarItem onClick={() => handleNavClick('mbti')} isActive={currentPage === 'mbti'}>
-            <Link color={currentPage === 'mbti' ? "" : "foreground"} href="mbti">
+          <NavbarItem isActive={currentPage === 'mbti'}>
+            <Link color={currentPage === 'mbti' ? "" : "foreground"} onPress={() => handleNavClick('mbti')} href="mbti">
                 Personality Types
             </Link>
           </NavbarItem>
-          <NavbarItem onClick={() => handleNavClick('characters')} isActive={currentPage === 'characters'}>
-            <Link color={currentPage === 'characters' ? "" : "foreground"}  href="characters">
+          <NavbarItem isActive={currentPage === 'characters'}>
+            <Link color={currentPage === 'characters' ? "" : "foreground"} onPress={() => handleNavClick('characters')} href="characters">
                 MBTI Characters
             </Link>
           </NavbarItem>
@@ -94,12 +90,9 @@ function App() {
           ))}
         </NavbarMenu>
       </Navbar>
-      {currentPage === 'home' && <HomePage />}
-      {currentPage === 'quiz' && <QuizPage />}
-      {currentPage === 'mbti' && <MbtiPage />}
-      {currentPage === 'characters' && <CharactersPage />}
+      <Content currentPage={currentPage} />
     </div>
   );
 }
 
-export default App;
+export default App
