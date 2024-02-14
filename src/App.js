@@ -7,9 +7,7 @@ import Content from "./Content.js";
 function App() {
   const [currentPage, setCurrentPage] = React.useState('home');
   
-  const handleNavClick = (page) => {
-    setCurrentPage(page);
-  };
+  const handleNavClick = (page) => setCurrentPage(page);
 
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 

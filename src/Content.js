@@ -3,8 +3,8 @@ import QuizPage from './pages/quiz/QuizPage.js'
 import MbtiPage from './pages/mbti/MbtiPage.js'
 import CharactersPage from './pages/characters/CharactersPage.js'
 
-function Content(currentPage) {
-    switch (currentPage) {
+function Content(props) {
+    switch (props.currentPage) {
       case 'home':
         return <HomePage />;
       case 'quiz':
