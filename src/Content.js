@@ -1,3 +1,5 @@
+import React from 'react'
+
 import HomePage from './pages/home/HomePage.js'
 import QuizPage from './pages/quiz/QuizPage.js'
 import MbtiPage from './pages/mbti/MbtiPage.js'
