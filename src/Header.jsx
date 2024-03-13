@@ -1,4 +1,5 @@
-import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button} from "@nextui-org/react";
+import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link as NextLink, Button} from "@nextui-org/react";
+import { Link } from 'react-router-dom';
 import { AcmeLogo } from "./assets/AcmeLogo";
 
 export default function Header() {
@@ -9,25 +10,25 @@ export default function Header() {
         <p className="font-bold text-inherit text-white">ACME</p>
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        <NavbarItem>
-          <Link color="foreground" href="#">
-            Features
-          </Link>
-        </NavbarItem>
         <NavbarItem isActive>
-          <Link href="#" aria-current="page">
-            Customers
-          </Link>
+          <NextLink color="foreground" href="home">
+            Inicio
+          </NextLink>
         </NavbarItem>
         <NavbarItem>
-          <Link color="foreground" href="#">
-            Integrations
-          </Link>
+          <NextLink color="foreground" href="quiz">
+            Quiz
+          </NextLink>
+        </NavbarItem>
+        <NavbarItem>
+          <NextLink color="foreground" href="mbti">
+            Mbtis
+          </NextLink>
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem className="hidden lg:flex">
-          <Link href="#">Login</Link>
+          <NextLink href="#">Login</NextLink>
         </NavbarItem>
         <NavbarItem>
           <Button as={Link} color="primary" href="#" variant="flat">
