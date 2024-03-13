@@ -2,26 +2,30 @@ import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link as NextLink, Button
 import { Link } from 'react-router-dom';
 import { AcmeLogo } from "./assets/AcmeLogo";
 
+import { useLocation } from 'react-router-dom';
+
 export default function Header() {
+  const location = useLocation();
+  
   return (
-    <Navbar>
+    <Navbar isBordered>
       <NavbarBrand>
         <AcmeLogo />
-        <p className="font-bold text-inherit text-white">ACME</p>
+        <p className="font-bold text-inherit">ACME</p>
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        <NavbarItem isActive>
-          <NextLink color="foreground" href="home">
+        <NavbarItem isActive={location.pathname === "/"}>
+          <NextLink color={location.pathname === "/" ? "#" : "foreground"} href="/">
             Inicio
           </NextLink>
         </NavbarItem>
-        <NavbarItem>
-          <NextLink color="foreground" href="quiz">
+        <NavbarItem isActive={location.pathname === "/quiz"}>
+          <NextLink color={location.pathname === "/quiz" ? "#" : "foreground"} href="quiz">
             Quiz
           </NextLink>
         </NavbarItem>
-        <NavbarItem>
-          <NextLink color="foreground" href="mbti">
+        <NavbarItem isActive={location.pathname === "/mbti"}>
+          <NextLink color={location.pathname === "/mbti" ? "#" : "foreground"} href="mbti">
             Mbtis
           </NextLink>
         </NavbarItem>
