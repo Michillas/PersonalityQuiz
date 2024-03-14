@@ -11,7 +11,7 @@ export default function Header() {
     <Navbar isBordered>
       <NavbarBrand>
         <AcmeLogo />
-        <p className="font-bold text-inherit">ACME</p>
+        <p className="font-bold text-inherit">PersonalityQuiz</p>
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem isActive={location.pathname === "/"}>
@@ -32,10 +32,10 @@ export default function Header() {
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem className="hidden lg:flex">
-          <NextLink href="#">Login</NextLink>
+          <NextLink href="login">Login</NextLink>
         </NavbarItem>
         <NavbarItem>
-          <Button as={Link} color="primary" href="#" variant="flat">
+          <Button as={Link} color="primary" href="register" variant="flat">
             Sign Up
           </Button>
         </NavbarItem>
