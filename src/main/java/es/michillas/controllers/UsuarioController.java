@@ -34,13 +34,13 @@ public class UsuarioController {
 
     @PostMapping("/create")
     public String createUsuario(@RequestBody Usuario usuario) throws SQLException {
-        System.out.println(usuario.toString());
+        //System.out.println(usuario.toString());
         usuarioService.createUsuario(usuario);
         return "redirect:/usuarios/list";
     }
 
     @PostMapping("/update")
-    public String updateUsuario(@ModelAttribute Usuario usuario) throws SQLException {
+    public String updateUsuario(@RequestBody Usuario usuario) throws SQLException {
         usuarioService.updateUsuario(usuario);
         return "redirect:/usuarios/list";
     }
