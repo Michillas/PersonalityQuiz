@@ -1,6 +1,6 @@
 export const MichillasLogo = () => (
   <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-    width="36px" viewBox="0 0 960 1568">
+    width="32px" viewBox="0 0 960 1568">
   <path fill="#000000" opacity="1.000000" stroke="none" 
     d="
   M1.000000,624.000000 
