@@ -79,4 +79,17 @@ public class Usuario {
     public void setOuterlife(int outerlife) {
         this.outerlife = outerlife;
     }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", mbti='" + mbti + '\'' +
+                ", focus=" + focus +
+                ", information=" + information +
+                ", decisions=" + decisions +
+                ", outerlife=" + outerlife +
+                '}';
+    }
 }

@@ -2,6 +2,11 @@
 import {RadioGroup, Radio, Divider} from "@nextui-org/react";
 
 export default function Question(props) {
+
+    const handleValueChange = {
+        
+    }
+
     return (
         <>
             <div className="flex flex-col items-center justify-center p-6">
@@ -11,6 +16,7 @@ export default function Question(props) {
                     <RadioGroup
                         color="secondary"
                         orientation="horizontal"
+                        onValueChange={handleValueChange}
                     >
                         <Radio color="success" classNames={{wrapper: ['h-20 w-20'], control: ['h-20 w-20']}} value="3"/>
                         <Radio color="success" classNames={{wrapper: ['h-16 w-16'], control: ['h-16 w-16']}} value="2"/>
