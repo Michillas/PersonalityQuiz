@@ -1,6 +1,6 @@
 import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link as NextLink, Button} from "@nextui-org/react";
 import { Link } from 'react-router-dom';
-import { AcmeLogo } from "./assets/AcmeLogo";
+import { MichillasLogo } from "./assets/MichillasLogo";
 
 import { useLocation } from 'react-router-dom';
 
@@ -10,8 +10,8 @@ export default function Header() {
   return (
     <Navbar isBordered>
       <NavbarBrand>
-        <AcmeLogo />
-        <p className="font-bold text-inherit">PersonalityQuiz</p>
+        <MichillasLogo />
+        <p className="font-bold text-inherit ml-2">PersonalityQuiz</p>
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem isActive={location.pathname === "/"}>

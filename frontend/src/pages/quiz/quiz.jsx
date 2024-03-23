@@ -20,7 +20,7 @@ export default function Quiz() {
     };
 
     return (
-        <>
+        <div className='min-h-[87.4vh]'>
             {questions.map((pregunta, index) => (
                 <Question key={index} title={pregunta.question} />
             ))}
@@ -30,6 +30,6 @@ export default function Quiz() {
                     Enviar
                 </Button>
             </div>
-        </>
+        </div>
     );
 }
