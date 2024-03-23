@@ -15,7 +15,7 @@ export default function Question(props) {
                         <Radio color="success" classNames={{ wrapper: [ 'h-20 w-20' ], control: [ 'h-20 w-20' ] }} value="3"/>
                         <Radio color="success" classNames={{ wrapper: [ 'h-16 w-16' ], control: [ 'h-16 w-16' ] }} value="2"/>
                         <Radio color="success" classNames={{ wrapper: [ 'h-12 w-12' ], control: [ 'h-12 w-12' ] }} value="1"/>
-                        <Radio color="default" classNames={{ wrapper: [ 'h-10 w-10' ], control: [ 'h-10 w-10' ] }} value="0"/>
+                        <Radio color="default" classNames={{ wrapper: [ 'h-12 w-12' ], control: [ 'h-12  w-12' ] }} value="0"/>
                         <Radio color="secondary" classNames={{ wrapper: [ 'h-12 w-12' ], control: [ 'h-12 w-12' ] }} value="-1"/>
                         <Radio color="secondary" classNames={{ wrapper: [ 'h-16 w-16' ], control: [ 'h-16 w-16' ] }} value="-2"/>
                         <Radio color="secondary" classNames={{ wrapper: [ 'h-20 w-20' ], control: [ 'h-20 w-20' ]  }} value="-3"/>
