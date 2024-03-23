@@ -1,4 +1,4 @@
-package es.michillas.service;
+package es.michillas.services;
 
 public class CharacterService {
 }

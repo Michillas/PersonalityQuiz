@@ -1,4 +1,4 @@
-package es.michillas.model;
+package es.michillas.models;
 
 public class Mbti {
     String letters;

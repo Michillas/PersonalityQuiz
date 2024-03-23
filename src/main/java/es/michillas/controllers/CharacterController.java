@@ -1,4 +1,4 @@
-package es.michillas.controller;
+package es.michillas.controllers;
 
 public class CharacterController {
 }

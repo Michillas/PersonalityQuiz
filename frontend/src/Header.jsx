@@ -29,6 +29,11 @@ export default function Header() {
             Mbtis
           </NextLink>
         </NavbarItem>
+        <NavbarItem isActive={location.pathname === "/admin"}>
+          <NextLink color={location.pathname === "/admin" ? "#" : "foreground"} href="admin">
+            Admin
+          </NextLink>
+        </NavbarItem>
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem className="hidden lg:flex">
