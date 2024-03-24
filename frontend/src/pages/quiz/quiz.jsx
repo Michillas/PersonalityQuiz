@@ -80,9 +80,9 @@ export default function Quiz() {
         const outerlifeSum = outerlife;
     
         const mbtiType = [
-            focusSum >= 0 ? 'I' : 'E',
+            focusSum >= 0 ? 'E' : 'I',
             informationSum >= 0 ? 'N' : 'S',
-            decisionsSum >= 0 ? 'F' : 'T',
+            decisionsSum >= 0 ? 'T' : 'F',
             outerlifeSum >= 0 ? 'P' : 'J'
         ].join('');
     
