@@ -1,10 +1,16 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react';
+
+import { useNavigate } from 'react-router-dom';
+
 import { Input, Button } from "@nextui-org/react";
 import Question from "./question";
 
-export default function Quiz() {
+export default function Quiz(props) {
     const [questions, setQuestions] = useState([]);
     const [name, setName] = useState('');
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetchQuestions();
@@ -70,6 +76,9 @@ export default function Quiz() {
         } catch (error) {
             console.error('Error sending quiz:', error);
         }
+
+        navigate('/result');
+        
     };
 
     const calculateMbti = () => {
@@ -87,6 +96,7 @@ export default function Quiz() {
         ].join('');
     
         setMbti(mbtiType);
+        props.setLetters(mbtiType)
     };
 
     return (
