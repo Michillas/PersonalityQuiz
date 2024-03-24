@@ -17,7 +17,6 @@ public class UsuarioService {
 
     DatabaseConnection mysql = new DatabaseConnection();
 
-    // Method to retrieve all usuarios from the database
     public List<Usuario> getAllUsuarios() throws SQLException {
         List<Usuario> usuarios = new ArrayList<>();
         String sql = "SELECT * FROM usuarios";
@@ -40,7 +39,6 @@ public class UsuarioService {
         return usuarios;
     }
 
-    // Method to retrieve a usuario by its ID from the database
     public Usuario getUsuarioById(int id) throws SQLException {
         String sql = "SELECT * FROM usuarios WHERE id = ?";
         try (Connection connection = mysql.connect();
@@ -60,10 +58,9 @@ public class UsuarioService {
                 }
             }
         }
-        return null; // Return null if no usuario found with the given id
+        return null;
     }
 
-    // Method to create a new usuario in the database
     public void createUsuario(Usuario usuario) throws SQLException {
         String sql = "INSERT INTO usuarios (username, mbti, focus, information, decisions, outerlife) VALUES (?, ?, ?, ?, ?, ?)";
         try (Connection connection = mysql.connect();
@@ -78,7 +75,6 @@ public class UsuarioService {
         }
     }
 
-    // Method to update an existing usuario in the database
     public void updateUsuario(Usuario usuario) throws SQLException {
         String sql = "UPDATE usuarios SET username = ?, mbti = ?, focus = ?, information = ?, decisions = ?, outerlife = ? WHERE id = ?";
         try (Connection connection = mysql.connect();
@@ -94,7 +90,6 @@ public class UsuarioService {
         }
     }
 
-    // Method to delete a usuario by its ID from the database
     public void deleteUsuario(int id) throws SQLException {
         String sql = "DELETE FROM usuarios WHERE id = ?";
         try (Connection connection = mysql.connect();

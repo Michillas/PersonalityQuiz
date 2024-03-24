@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 export const ChevronDownIcon = ({strokeWidth = 1.5, ...otherProps}) => (
   <svg
     aria-hidden="true"

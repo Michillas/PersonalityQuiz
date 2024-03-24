@@ -17,12 +17,12 @@ export default function Characters(props) {
             const data = await response.json();
             setCharacters(data);
         } catch (error) {
-            console.error('Error fetching questions:', error);
+            console.error('Error fetching characters:', error);
         }
     };
 
     return (
-        <div className="gap-2 grid grid-cols-2 sm:grid-cols-4">
+        <div className="gap-2 grid grid-cols-2 sm:grid-cols-3">
             {characters.map((item, index) => (
                 item.mbti === props.mbtiType && (
                     <Card shadow="sm" key={index} isPressable onPress={() => console.log("item pressed")}>
@@ -31,13 +31,13 @@ export default function Characters(props) {
                                 shadow="sm"
                                 radius="lg"
                                 width="100%"
-                                alt={item.title}
-                                className="w-full object-cover h-[140px]"
+                                alt={item.name}
+                                className="w-full object-cover h-[240px]"
                                 src={item.img}
                             />
                         </CardBody>
                         <CardFooter className="text-small justify-between">
-                            <b>{item.title}</b>
+                            <b>{item.name}</b>
                             <p className="text-default-500">{item.mbti}</p>
                         </CardFooter>
                     </Card>

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 export const PlusIcon = ({size = 24, width, height, ...props}) => (
   <svg
     aria-hidden="true"

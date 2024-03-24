@@ -17,7 +17,6 @@ public class PreguntasService {
 
     DatabaseConnection mysql = new DatabaseConnection();
 
-    // Method to retrieve all questions from the database
     public List<Preguntas> getAllQuestions() throws SQLException {
         List<Preguntas> preguntasList = new ArrayList<>();
         String sql = "SELECT * FROM preguntas";
@@ -35,7 +34,6 @@ public class PreguntasService {
         return preguntasList;
     }
 
-    // Method to retrieve questions by type from the database
     public List<Preguntas> getQuestionsByType(String type) throws SQLException {
         List<Preguntas> preguntasList = new ArrayList<>();
         String sql = "SELECT * FROM preguntas WHERE type = ?";
@@ -55,7 +53,6 @@ public class PreguntasService {
         return preguntasList;
     }
 
-    // Method to create a new question in the database
     public void createQuestion(Preguntas pregunta) throws SQLException {
         String sql = "INSERT INTO preguntas (question, type) VALUES (?, ?)";
         try (Connection connection = mysql.connect();
@@ -66,7 +63,6 @@ public class PreguntasService {
         }
     }
 
-    // Method to delete a question by its question text from the database
     public void deleteQuestion(String question) throws SQLException {
         String sql = "DELETE FROM preguntas WHERE question = ?";
         try (Connection connection = mysql.connect();
