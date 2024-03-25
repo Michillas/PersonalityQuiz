@@ -22,7 +22,7 @@ import {ChevronDownIcon} from "./ChevronDownIcon";
 import {columns, users} from "./data";
 import {capitalize} from "./utils";
 
-const INITIAL_VISIBLE_COLUMNS = ["name", "role", "actions"];
+const INITIAL_VISIBLE_COLUMNS = ["id", "name", "mbti", "actions"];
 
 export default function CrudTable() {
   const [filterValue, setFilterValue] = React.useState("");
