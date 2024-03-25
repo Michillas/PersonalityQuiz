@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 
-import { Input, Button } from "@nextui-org/react";
+import { Input, Button, Divider } from "@nextui-org/react";
 import Question from "./question";
 
 export default function Quiz(props) {
@@ -101,14 +101,21 @@ export default function Quiz(props) {
 
     return (
         <div className='min-h-[87.4vh]'>
+            <div className="flex flex-col items-center mt-6">
+                <div className="text-5xl font-bold m-6 mb-4 text-center">Quiz de personalidades MBTI</div>
+                <div className="text-slate-400">¿Quieres saber tu tipo de personalidad?</div>
+                <Divider className='w-[100vh] mt-6'/>
+            </div>
+
             {questions.map((pregunta, index) => (
                 <Question key={index} title={pregunta.question} type={pregunta.type} changeValue={changeValue} setFocus={setFocus} setInformation={setInformation} setDecisions={setDecisions} setOuterlife={setOuterlife} />
             ))}
-            <div className="flex flex-col items-center mt-6 pb-12">
+            <div className="flex flex-col items-center mt-6 pb-4">
                 <Input id="nombre" type="text" variant="flat" label="Nombre" placeholder="Escribe tu nombre" className="max-w-64" value={name} onChange={(e) => setName(e.target.value)} />
                 <Button onClick={handleSendQuiz} color="primary" variant="shadow" className="mt-6 w-64">
                     Enviar
                 </Button>
+                <div className='mt-16 mb-4 text-slate-600'>© 2024 Michillas</div>
             </div>
         </div>
     );
