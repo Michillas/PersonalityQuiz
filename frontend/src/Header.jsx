@@ -1,11 +1,12 @@
 import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link as NextLink, Button} from "@nextui-org/react";
-import { Link } from 'react-router-dom';
 import { MichillasLogo } from "./assets/MichillasLogo";
 
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function Header() {
   const location = useLocation();
+
+  const navigate = useNavigate();
   
   return (
     <Navbar isBordered>
@@ -37,11 +38,11 @@ export default function Header() {
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem className="hidden lg:flex">
-          <NextLink href="login">Login</NextLink>
+          <NextLink href="login">Iniciar sesión</NextLink>
         </NavbarItem>
         <NavbarItem>
-          <Button as={Link} color="primary" href="register" variant="flat">
-            Sign Up
+          <Button color="primary" variant="flat" onPress={() => navigate('/register')} >
+            Registrarse
           </Button>
         </NavbarItem>
       </NavbarContent>

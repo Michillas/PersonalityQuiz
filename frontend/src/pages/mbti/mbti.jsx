@@ -2,7 +2,7 @@ import Characters from "./characters";
 
 import { Divider } from "@nextui-org/react";
 
-const mbtiTypes = ["ISTJ", "ESTJ", "ISFJ", "ESFJ", "ESFP", "ISFP", "ESTP", "ISTP", "INFJ", "ENFJ", "INFP", "ENFP", "INTP", "ENTP", "INTJ", "ENTJ"];
+const mbtiTypes = ["INTJ", "ENTJ", "ISFJ", "ESFJ", "ESFP", "ISFP", "ESTP", "ISTP", "INFJ", "ENFJ", "INFP", "ENFP", "INTP", "ENTP", "ISTJ", "ESTJ"];
 
 export default function Mbti() {
     return (

@@ -11,7 +11,7 @@ export default function Quiz(props) {
     const [name, setName] = useState('');
 
     const navigate = useNavigate();
-
+    
     useEffect(() => {
         fetchQuestions();
     }, []);

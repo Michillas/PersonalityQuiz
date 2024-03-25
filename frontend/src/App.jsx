@@ -9,6 +9,7 @@ import Quiz from './pages/quiz/quiz.jsx';
 import Result from './pages/quiz/result.jsx';
 import Admin from './pages/mvc/admin.jsx';
 import Login from './pages/login/login.jsx';
+import Register from './pages/login/register.jsx';
 import NotFound from './pages/notfound/notfound.jsx';
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <Route path="result" element={<Result letters={letters}/>} />
           <Route path="admin" element={<Admin />} />
           <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
