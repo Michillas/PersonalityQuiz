@@ -22,7 +22,7 @@ function App() {
       <Routes>
         <Route path="/">
           <Route index element={<Index />} />
-          <Route path="quiz" element={<Quiz setLetters={setLetters} />} />
+          <Route path="quiz" element={<Quiz letters={letters} setLetters={setLetters} />} />
           <Route path="mbti" element={<Mbti />} />
           <Route path="result" element={<Result letters={letters}/>} />
           <Route path="admin" element={<Admin />} />

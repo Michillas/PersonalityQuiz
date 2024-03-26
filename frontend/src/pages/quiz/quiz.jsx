@@ -42,16 +42,33 @@ export default function Quiz(props) {
         });
     };
 
-    const [mbti, setMbti] = useState('');
+    const calculateMbti = () => {
+        
+        const focusSum = focus;
+        const informationSum = information;
+        const decisionsSum = decisions;
+        const outerlifeSum = outerlife;
+    
+        const mbtiType = [
+            focusSum >= 0 ? 'E' : 'I',
+            informationSum >= 0 ? 'N' : 'S',
+            decisionsSum >= 0 ? 'T' : 'F',
+            outerlifeSum >= 0 ? 'P' : 'J'
+        ].join('');
+        
+        console.log(mbtiType)
+        props.setLetters(mbtiType)
+        return mbtiType;
+    }
 
     const handleSendQuiz = async () => {
 
-        calculateMbti()
+        const mbtiType = calculateMbti();
 
         try {
             const usuarioData = {
                 username: name,
-                mbti: mbti,
+                mbti: mbtiType,
                 focus: focus,
                 information: information,
                 decisions: decisions,
@@ -67,11 +84,9 @@ export default function Quiz(props) {
             });
 
             if (response.ok) {
-                // Handle success (optional)
-                console.log('Usuario created successfully');
+                console.log('MBTI saved');
             } else {
-                // Handle error
-                console.error('Failed to create Usuario');
+                console.error('Failed to save MBTI');
             }
         } catch (error) {
             console.error('Error sending quiz:', error);
@@ -79,24 +94,6 @@ export default function Quiz(props) {
 
         navigate('/result');
         
-    };
-
-    const calculateMbti = () => {
-        
-        const focusSum = focus;
-        const informationSum = information;
-        const decisionsSum = decisions;
-        const outerlifeSum = outerlife;
-    
-        const mbtiType = [
-            focusSum >= 0 ? 'E' : 'I',
-            informationSum >= 0 ? 'N' : 'S',
-            decisionsSum >= 0 ? 'T' : 'F',
-            outerlifeSum >= 0 ? 'P' : 'J'
-        ].join('');
-    
-        setMbti(mbtiType);
-        props.setLetters(mbtiType)
     };
 
     return (
