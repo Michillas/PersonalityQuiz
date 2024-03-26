@@ -37,13 +37,13 @@ export default function Question(props) {
                         onValueChange={handleValueChange}
                         value={selectedValue}
                     >
-                        <Radio color="success" classNames={{ wrapper: ['h-20 w-20'], control: ['h-20 w-20'] }} value="3" />
-                        <Radio color="success" classNames={{ wrapper: ['h-16 w-16'], control: ['h-16 w-16'] }} value="2" />
-                        <Radio color="success" classNames={{ wrapper: ['h-12 w-12'], control: ['h-12 w-12'] }} value="1" />
-                        <Radio color="default" classNames={{ wrapper: ['h-12 w-12'], control: ['h-12 w-12'] }} value="0" />
-                        <Radio color="secondary" classNames={{ wrapper: ['h-12 w-12'], control: ['h-12 w-12'] }} value="-1" />
-                        <Radio color="secondary" classNames={{ wrapper: ['h-16 w-16'], control: ['h-16 w-16'] }} value="-2" />
-                        <Radio color="secondary" classNames={{ wrapper: ['h-20 w-20'], control: ['h-20 w-20'] }} value="-3" />
+                        <Radio color="success" classNames={{ wrapper: ['lg:h-20 lg:w-20 sm:h-10 sm:w-10'], control: ['lg:h-20 lg:w-20 sm:h-10 sm:w-10'] }} value="3" />
+                        <Radio color="success" classNames={{ wrapper: ['lg:h-16 lg:w-16 sm:h-8 sm:w-8'], control: ['lg:h-16 lg:w-16 sm:h-8 sm:w-8'] }} value="2" />
+                        <Radio color="success" classNames={{ wrapper: ['lg:h-12 lg:w-12 sm:h-6 sm:w-6'], control: ['lg:h-12 lg:w-12 sm:h-6 sm:w-6'] }} value="1" />
+                        <Radio color="default" classNames={{ wrapper: ['lg:h-12 lg:w-12 sm:h-6 sm:w-6'], control: ['lg:h-12 lg:w-12 sm:h-6 sm:w-6'] }} value="0" />
+                        <Radio color="secondary" classNames={{ wrapper: ['lg:h-12 lg:w-12 sm:h-6 sm:w-6'], control: ['lg:h-12 lg:w-12 sm:h-6 sm:w-6'] }} value="-1" />
+                        <Radio color="secondary" classNames={{ wrapper: ['lg:h-16 lg:w-16 sm:h-8 sm:w-8'], control: ['lg:h-16 lg:w-16 sm:h-8 sm:w-8'] }} value="-2" />
+                        <Radio color="secondary" classNames={{ wrapper: ['lg:h-20 lg:w-20 sm:h-10 sm:w-10'], control: ['lg:h-20 lg:w-20 sm:h-10 sm:w-10'] }} value="-3" />
                     </RadioGroup>
                     <div className="w-40 text-center">No estoy de acuerdo</div>
                 </div>
