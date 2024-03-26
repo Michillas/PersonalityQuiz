@@ -19,12 +19,39 @@ import {PlusIcon} from "./PlusIcon";
 import {VerticalDotsIcon} from "./VerticalDotsIcon";
 import {SearchIcon} from "./SearchIcon";
 import {ChevronDownIcon} from "./ChevronDownIcon";
-import {columns, users} from "./data";
 import {capitalize} from "./utils";
 
 const INITIAL_VISIBLE_COLUMNS = ["id", "name", "mbti", "actions"];
 
 export default function CrudTable() {
+
+  /* */
+
+  const [users, setUsers] = React.useState([]);
+
+  React.useEffect(() => {
+      fetchUsers();
+  }, []);
+
+  const fetchUsers = async () => {
+      try {
+          const response = await fetch('http://localhost:8080/usuarios/list');
+          const data = await response.json();
+          setUsers(data);
+      } catch (error) {
+          console.error('Error fetching questions:', error);
+      }
+  };
+
+  const columns = [
+    {name: "ID", uid: "id", sortable: true},
+    {name: "NOMBRE", uid: "name", sortable: true},
+    {name: "MBTI", uid: "mbti", sortable: true},
+    {name: "ACCIONES", uid: "actions"},
+  ];
+
+  /* */
+
   const [filterValue, setFilterValue] = React.useState("");
   const [selectedKeys, setSelectedKeys] = React.useState(new Set([]));
   const [visibleColumns, setVisibleColumns] = React.useState(new Set(INITIAL_VISIBLE_COLUMNS));
@@ -48,7 +75,7 @@ export default function CrudTable() {
 
     if (hasSearchFilter) {
       filteredUsers = filteredUsers.filter((user) =>
-        user.name.toLowerCase().includes(filterValue.toLowerCase()),
+        user.username.toLowerCase().includes(filterValue.toLowerCase()),
       );
     }
 
@@ -82,10 +109,8 @@ export default function CrudTable() {
         return (
           <User
             avatarProps={{radius: "lg", src: user.avatar}}
-            description={user.email}
-            name={cellValue}
+            name={user.username}
           >
-            {user.email}
           </User>
         );
       case "role":
@@ -155,7 +180,7 @@ export default function CrudTable() {
           <Input
             isClearable
             className="w-full sm:max-w-[44%]"
-            placeholder="Search by name..."
+            placeholder="Buscar por nombre..."
             startContent={<SearchIcon />}
             value={filterValue}
             onClear={() => onClear()}
@@ -165,7 +190,7 @@ export default function CrudTable() {
             <Dropdown>
               <DropdownTrigger className="hidden sm:flex">
                 <Button endContent={<ChevronDownIcon className="text-small" />} variant="flat">
-                  Columns
+                  Columnas
                 </Button>
               </DropdownTrigger>
               <DropdownMenu
@@ -184,14 +209,14 @@ export default function CrudTable() {
               </DropdownMenu>
             </Dropdown>
             <Button color="primary" endContent={<PlusIcon />}>
-              Add New
+              Crear Nuevo
             </Button>
           </div>
         </div>
         <div className="flex justify-between items-center">
-          <span className="text-default-400 text-small">Total {users.length} users</span>
+          <span className="text-default-400 text-small">Total: {users.length} usuarios</span>
           <label className="flex items-center text-default-400 text-small">
-            Rows per page:
+            Filas por pagina:
             <select
               className="bg-transparent outline-none text-default-400 text-small"
               onChange={onRowsPerPageChange}
@@ -218,8 +243,8 @@ export default function CrudTable() {
       <div className="py-2 px-2 flex justify-between items-center">
         <span className="w-[30%] text-small text-default-400">
           {selectedKeys === "all"
-            ? "All items selected"
-            : `${selectedKeys.size} of ${filteredItems.length} selected`}
+            ? "Todos seleccionados"
+            : `${selectedKeys.size} de ${filteredItems.length} seleccionados`}
         </span>
         <Pagination
           isCompact
@@ -232,10 +257,10 @@ export default function CrudTable() {
         />
         <div className="hidden sm:flex w-[30%] justify-end gap-2">
           <Button isDisabled={pages === 1} size="sm" variant="flat" onPress={onPreviousPage}>
-            Previous
+            Anterior
           </Button>
           <Button isDisabled={pages === 1} size="sm" variant="flat" onPress={onNextPage}>
-            Next
+            Siguiente
           </Button>
         </div>
       </div>

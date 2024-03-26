@@ -1,9 +1,12 @@
 package es.michillas.controllers;
 
+import es.michillas.models.Preguntas;
 import es.michillas.models.Usuario;
 import es.michillas.services.UsuarioService ;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -26,10 +29,14 @@ public class UsuarioController {
     }
 
     @GetMapping("/list")
-    public String getAllUsuarios(Model model) throws SQLException {
-        List<Usuario> usuarios = usuarioService.getAllUsuarios();
-        model.addAttribute("usuarios", usuarios);
-        return "usuarios"; // Assuming you have a Thymeleaf template named "usuarios.html" for listing all usuarios
+    public ResponseEntity<List<Usuario>> getAllUsuarios() {
+        try {
+            List<Usuario> usuario = usuarioService.getAllUsuarios();
+            return ResponseEntity.ok().body(usuario);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 
     @PostMapping("/create")
