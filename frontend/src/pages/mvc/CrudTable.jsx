@@ -15,10 +15,10 @@ import {
   User,
   Pagination,
 } from "@nextui-org/react";
-import {PlusIcon} from "./PlusIcon";
-import {VerticalDotsIcon} from "./VerticalDotsIcon";
-import {SearchIcon} from "./SearchIcon";
-import {ChevronDownIcon} from "./ChevronDownIcon";
+import {PlusIcon} from "./icons/PlusIcon";
+import {VerticalDotsIcon} from "./icons/VerticalDotsIcon";
+import {SearchIcon} from "./icons/SearchIcon";
+import {ChevronDownIcon} from "./icons/ChevronDownIcon";
 import {capitalize} from "./utils";
 
 const INITIAL_VISIBLE_COLUMNS = ["id", "name", "mbti", "actions"];
