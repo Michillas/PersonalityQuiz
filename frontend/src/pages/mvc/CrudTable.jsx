@@ -13,10 +13,12 @@ import {
   DropdownMenu,
   DropdownItem,
   User,
-  Pagination,
+  Pagination
 } from "@nextui-org/react";
 import {PlusIcon} from "./icons/PlusIcon";
-import {VerticalDotsIcon} from "./icons/VerticalDotsIcon";
+import {EditIcon} from "./icons/EditIcon";
+import {DeleteIcon} from "./icons/DeleteIcon";
+import {EyeIcon} from "./icons/EyeIcon";
 import {SearchIcon} from "./icons/SearchIcon";
 import {ChevronDownIcon} from "./icons/ChevronDownIcon";
 import {capitalize} from "./utils";
@@ -24,8 +26,6 @@ import {capitalize} from "./utils";
 const INITIAL_VISIBLE_COLUMNS = ["id", "name", "mbti", "actions"];
 
 export default function CrudTable() {
-
-  /* */
 
   const [users, setUsers] = React.useState([]);
 
@@ -50,10 +50,7 @@ export default function CrudTable() {
     {name: "ACCIONES", uid: "actions"},
   ];
 
-  /* */
-
   const [filterValue, setFilterValue] = React.useState("");
-  const [selectedKeys, setSelectedKeys] = React.useState(new Set([]));
   const [visibleColumns, setVisibleColumns] = React.useState(new Set(INITIAL_VISIBLE_COLUMNS));
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
   const [sortDescriptor, setSortDescriptor] = React.useState({
@@ -122,19 +119,16 @@ export default function CrudTable() {
         );
       case "actions":
         return (
-          <div className="relative flex justify-end items-center gap-2">
-            <Dropdown>
-              <DropdownTrigger>
-                <Button isIconOnly size="sm" variant="light">
-                  <VerticalDotsIcon className="text-default-300" />
-                </Button>
-              </DropdownTrigger>
-              <DropdownMenu>
-                <DropdownItem>View</DropdownItem>
-                <DropdownItem>Edit</DropdownItem>
-                <DropdownItem>Delete</DropdownItem>
-              </DropdownMenu>
-            </Dropdown>
+          <div className="relative flex items-center gap-2">
+            <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
+              <EyeIcon />
+            </span>
+            <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
+              <EditIcon />
+            </span>
+            <span className="text-lg text-danger cursor-pointer active:opacity-50">
+              <DeleteIcon />
+            </span>
           </div>
         );
       default:
@@ -241,11 +235,6 @@ export default function CrudTable() {
   const bottomContent = React.useMemo(() => {
     return (
       <div className="py-2 px-2 flex justify-between items-center">
-        <span className="w-[30%] text-small text-default-400">
-          {selectedKeys === "all"
-            ? "Todos seleccionados"
-            : `${selectedKeys.size} de ${filteredItems.length} seleccionados`}
-        </span>
         <Pagination
           isCompact
           showControls
@@ -265,7 +254,7 @@ export default function CrudTable() {
         </div>
       </div>
     );
-  }, [selectedKeys, items.length, page, pages, hasSearchFilter]);
+  }, [items.length, page, pages, hasSearchFilter]);
 
   return (
     <Table
@@ -276,12 +265,9 @@ export default function CrudTable() {
       classNames={{
         wrapper: "max-h-[382px]",
       }}
-      selectedKeys={selectedKeys}
-      selectionMode="multiple"
       sortDescriptor={sortDescriptor}
       topContent={topContent}
       topContentPlacement="outside"
-      onSelectionChange={setSelectedKeys}
       onSortChange={setSortDescriptor}
     >
       <TableHeader columns={headerColumns}>
