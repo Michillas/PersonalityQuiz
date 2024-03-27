@@ -6,4 +6,6 @@
 
 * {
     font-family: "Inter", serif;
+    scrollbar-width: auto;
+    scrollbar-color: #666 #333;
 }

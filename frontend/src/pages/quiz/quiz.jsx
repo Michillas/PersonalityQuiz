@@ -92,6 +92,8 @@ export default function Quiz() {
         }
 
         navigate('/result/' + mbtiType);
+
+        window.scrollTo(0, 0);
         
     };
 
