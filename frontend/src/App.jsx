@@ -14,14 +14,12 @@ import NotFound from './pages/notfound/notfound.jsx';
 
 function App() {
 
-  const [letters, setLetters] = useState('');
-
   return (
     <>
       <Header />
       <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/quiz" element={<Quiz letters={letters} setLetters={setLetters} />} />
+          <Route path="/quiz" element={<Quiz />} />
           <Route path="/mbti" element={<Mbti />} />
           <Route path="/result/:mbti" element={<Result />} />
           <Route path="/admin" element={<Admin />} />

@@ -1,7 +1,7 @@
 import React from "react";
 import {Input, Button} from "@nextui-org/react";
-import {EyeFilledIcon} from "./EyeFilledIcon";
-import {EyeSlashFilledIcon} from "./EyeSlashFilledIcon";
+import {EyeFilledIcon} from "./icons/EyeFilledIcon";
+import {EyeSlashFilledIcon} from "./icons/EyeSlashFilledIcon";
 
 export default function Register() {
     const [isVisible, setIsVisible] = React.useState(false);

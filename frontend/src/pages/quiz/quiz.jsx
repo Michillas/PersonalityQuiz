@@ -57,7 +57,6 @@ export default function Quiz(props) {
         ].join('');
         
         console.log(mbtiType)
-        props.setLetters(mbtiType)
         return mbtiType;
     }
 
