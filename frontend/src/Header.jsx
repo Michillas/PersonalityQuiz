@@ -21,17 +21,17 @@ export default function Header() {
           </NextLink>
         </NavbarItem>
         <NavbarItem isActive={location.pathname === "/quiz"}>
-          <NextLink color={location.pathname === "/quiz" ? "#" : "foreground"} href="quiz">
+          <NextLink color={location.pathname === "/quiz" ? "#" : "foreground"} href="/quiz">
             Quiz
           </NextLink>
         </NavbarItem>
         <NavbarItem isActive={location.pathname === "/mbti"}>
-          <NextLink color={location.pathname === "/mbti" ? "#" : "foreground"} href="mbti">
+          <NextLink color={location.pathname === "/mbti" ? "#" : "foreground"} href="/mbti">
             Mbtis
           </NextLink>
         </NavbarItem>
         <NavbarItem isActive={location.pathname === "/admin"}>
-          <NextLink color={location.pathname === "/admin" ? "#" : "foreground"} href="admin">
+          <NextLink color={location.pathname === "/admin" ? "#" : "foreground"} href="/admin">
             Admin
           </NextLink>
         </NavbarItem>

@@ -20,16 +20,14 @@ function App() {
     <>
       <Header />
       <Routes>
-        <Route path="/">
-          <Route index element={<Index />} />
-          <Route path="quiz" element={<Quiz letters={letters} setLetters={setLetters} />} />
-          <Route path="mbti" element={<Mbti />} />
-          <Route path="result" element={<Result letters={letters}/>} />
-          <Route path="admin" element={<Admin />} />
-          <Route path="login" element={<Login />} />
-          <Route path="register" element={<Register />} />
+          <Route path="/" element={<Index />} />
+          <Route path="/quiz" element={<Quiz letters={letters} setLetters={setLetters} />} />
+          <Route path="/mbti" element={<Mbti />} />
+          <Route path="/result/:mbti" element={<Result />} />
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path="*" element={<NotFound />} />
-        </Route>
       </Routes>
     </>
   )

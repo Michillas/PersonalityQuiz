@@ -92,7 +92,7 @@ export default function Quiz(props) {
             console.error('Error sending quiz:', error);
         }
 
-        navigate('/result');
+        navigate('/result/' + mbtiType);
         
     };
 
