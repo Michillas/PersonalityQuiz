@@ -34,15 +34,16 @@ public class MbtiController {
     }
 
     @GetMapping("/{type}")
-    public String getMbtisByMbti(@PathVariable String type, Model model) {
+    public ResponseEntity<Mbti> getMbtiByMbti(@PathVariable("type") String type) {
         try {
-            List<Mbti> mbti = mbtiService.getMbtisByMbti(type);
-            model.addAttribute("mbti", mbti);
+            Mbti mbti = mbtiService.getMbtiByMbti(type);
+            if (mbti != null) {
+                return ResponseEntity.ok().body(mbti);
+            }
         } catch (SQLException e) {
-            // Handle SQL Exception
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
-        return "mbtiList";
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
     }
 
     @PostMapping("/create")

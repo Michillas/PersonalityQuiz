@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import es.michillas.models.Usuario;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -34,24 +35,23 @@ public class MbtiService {
         return mbtiList;
     }
 
-    public List<Mbti> getMbtisByMbti(String type) throws SQLException {
-        List<Mbti> mbtiList = new ArrayList<>();
+    public Mbti getMbtiByMbti(String mbti) throws SQLException {
         String sql = "SELECT * FROM `mbti` WHERE mbti = ?";
         try (Connection connection = mysql.connect();
              PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setString(1, type);
+            statement.setString(1, mbti);
             try (ResultSet resultSet = statement.executeQuery()) {
-                while (resultSet.next()) {
-                    Mbti mbti = new Mbti(
+                if (resultSet.next()) {
+                    return new Mbti(
                             resultSet.getString("mbti"),
                             resultSet.getString("name"),
                             resultSet.getString("description")
                     );
-                    mbtiList.add(mbti);
+                } else {
+                    return null; // MBTI not found
                 }
             }
         }
-        return mbtiList;
     }
 
     public void createMbti(Mbti mbti) throws SQLException {
