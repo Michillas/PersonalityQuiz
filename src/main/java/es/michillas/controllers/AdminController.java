@@ -34,9 +34,9 @@ public class AdminController {
     }
 
     @GetMapping("/{type}")
-    public String getAdminsByMbti(@PathVariable String type, Model model) {
+    public String getAdminsByName(@PathVariable String name, Model model) {
         try {
-            List<Admin> admin = adminService.getAdminsByMbti(type);
+            List<Admin> admin = adminService.getAdminsByName(name);
             model.addAttribute("admin", admin);
         } catch (SQLException e) {
             // Handle SQL Exception

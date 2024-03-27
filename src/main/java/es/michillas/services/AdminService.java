@@ -33,9 +33,9 @@ public class AdminService {
         return adminList;
     }
 
-    public List<Admin> getAdminsByMbti(String type) throws SQLException {
+    public List<Admin> getAdminsByName(String type) throws SQLException {
         List<Admin> adminList = new ArrayList<>();
-        String sql = "SELECT * FROM `admin` WHERE mbti = ?";
+        String sql = "SELECT * FROM `admin` WHERE name = ?";
         try (Connection connection = mysql.connect();
              PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, type);
@@ -53,7 +53,7 @@ public class AdminService {
     }
 
     public void createAdmin(Admin admin) throws SQLException {
-        String sql = "INSERT INTO `admin` (name, mbti, img) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO `admin` (name, password) VALUES (?, ?)";
         try (Connection connection = mysql.connect();
              PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, admin.getName());
