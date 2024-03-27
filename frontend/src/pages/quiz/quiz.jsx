@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { Input, Button, Divider } from "@nextui-org/react";
 import Question from "./question";
 
-export default function Quiz(props) {
+export default function Quiz() {
     const [questions, setQuestions] = useState([]);
     const [name, setName] = useState('');
 
