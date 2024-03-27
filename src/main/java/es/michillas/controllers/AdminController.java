@@ -33,7 +33,7 @@ public class AdminController {
         }
     }
 
-    @GetMapping("/{type}")
+    @GetMapping("/{name}")
     public String getAdminsByName(@PathVariable String name, Model model) {
         try {
             List<Admin> admin = adminService.getAdminsByName(name);
