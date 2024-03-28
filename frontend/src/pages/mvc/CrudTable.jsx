@@ -1,3 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-undef */
+/* eslint-disable react/prop-types */
 import React from "react";
 import {
   Table,
@@ -27,6 +30,8 @@ const INITIAL_VISIBLE_COLUMNS = ["id", "name", "mbti", "actions"];
 
 export default function CrudTable() {
 
+  const serverIP = process.env.REACT_APP_SERVERIP;
+
   const [users, setUsers] = React.useState([]);
 
   React.useEffect(() => {
@@ -35,7 +40,7 @@ export default function CrudTable() {
 
   const fetchUsers = async () => {
       try {
-          const response = await fetch('http://localhost:8080/usuarios/list');
+          const response = await fetch(`http://${serverIP}/usuarios/list`);
           const data = await response.json();
           setUsers(data);
       } catch (error) {

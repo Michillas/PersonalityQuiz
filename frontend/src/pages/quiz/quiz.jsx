@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react';
 
@@ -7,6 +9,9 @@ import { Input, Button, Divider } from "@nextui-org/react";
 import Question from "./question";
 
 export default function Quiz() {
+
+    const serverIP = process.env.REACT_APP_SERVERIP;
+
     const [questions, setQuestions] = useState([]);
     const [name, setName] = useState('');
 
@@ -18,7 +23,7 @@ export default function Quiz() {
 
     const fetchQuestions = async () => {
         try {
-            const response = await fetch('http://localhost:8080/preguntas/list');
+            const response = await fetch(`http://${serverIP}/preguntas/list`);
             const data = await response.json();
             setQuestions(data);
         } catch (error) {
@@ -74,7 +79,7 @@ export default function Quiz() {
                 outerlife: outerlife
             };
 
-            const response = await fetch('http://localhost:8080/usuarios/create', {
+            const response = await fetch(`http://${serverIP}/usuarios/create`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

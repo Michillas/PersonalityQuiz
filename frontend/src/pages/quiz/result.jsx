@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
 import { Card, CardBody, Divider } from '@nextui-org/react';
 import { useEffect, useState } from 'react'
@@ -7,18 +9,19 @@ import Characters from "../mbti/characters";
 
 export default function Result() {
 
+    const serverIP = process.env.REACT_APP_SERVERIP;
+
     const { mbti } = useParams();
 
     const [mbtiType, setMbtiType] = useState({ letters: '', name: '', description: '' });
     
     useEffect(() => {
         fetchMbti();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const fetchMbti = async () => {
         try {
-            const response = await fetch('http://localhost:8080/mbtis/' + mbti);
+            const response = await fetch(`http://${serverIP}/mbtis/` + mbti);
             const data = await response.json();
             setMbtiType(data);
         } catch (error) {

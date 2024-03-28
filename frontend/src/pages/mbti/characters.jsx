@@ -1,9 +1,13 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react';
 
 import {Card, CardBody, CardFooter, Image} from "@nextui-org/react";
 
 export default function Characters(props) {
+
+    const serverIP = process.env.REACT_APP_SERVERIP;
 
     const [characters, setCharacters] = useState([]);
 
@@ -13,7 +17,7 @@ export default function Characters(props) {
 
     const fetchCharacters = async () => {
         try {
-            const response = await fetch('http://localhost:8080/characters/list');
+            const response = await fetch(`http://${serverIP}/characters/list`);
             const data = await response.json();
             setCharacters(data);
         } catch (error) {
