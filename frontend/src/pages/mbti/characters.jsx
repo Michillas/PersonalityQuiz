@@ -17,7 +17,7 @@ export default function Characters(props) {
 
     const fetchCharacters = async () => {
         try {
-            const response = await fetch(`http://${serverIP}/characters/list`);
+            const response = await fetch(`https://${serverIP}/characters/list`);
             const data = await response.json();
             setCharacters(data);
         } catch (error) {
