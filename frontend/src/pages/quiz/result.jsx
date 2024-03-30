@@ -21,7 +21,7 @@ export default function Result() {
 
     const fetchMbti = async () => {
         try {
-            const response = await fetch(`https://${serverIP}/mbtis/` + mbti);
+            const response = await fetch(`${serverIP}/mbtis/` + mbti);
             const data = await response.json();
             setMbtiType(data);
         } catch (error) {

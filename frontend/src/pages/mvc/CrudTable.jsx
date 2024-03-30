@@ -40,7 +40,7 @@ export default function CrudTable() {
 
   const fetchUsers = async () => {
       try {
-          const response = await fetch(`https://${serverIP}/usuarios/list`);
+          const response = await fetch(`${serverIP}/usuarios/list`);
           const data = await response.json();
           setUsers(data);
       } catch (error) {

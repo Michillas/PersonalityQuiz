@@ -23,7 +23,7 @@ export default function Quiz() {
 
     const fetchQuestions = async () => {
         try {
-            const response = await fetch(`https://${serverIP}/preguntas/list`);
+            const response = await fetch(`${serverIP}/preguntas/list`);
             const data = await response.json();
             setQuestions(data);
         } catch (error) {
@@ -79,7 +79,7 @@ export default function Quiz() {
                 outerlife: outerlife
             };
 
-            const response = await fetch(`https://${serverIP}/usuarios/create`, {
+            const response = await fetch(`${serverIP}/usuarios/create`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
