@@ -7,7 +7,7 @@
 
 
 
-## Deploy on Vercel
+## Deployment on Vercel
 (Certain functionalities may be unavailable due to the lack of a backend server.)
 #### -> https://personality-quiz-mbti.vercel.app/
 
