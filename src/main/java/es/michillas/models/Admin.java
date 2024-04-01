@@ -1,8 +1,8 @@
 package es.michillas.models;
 
 public class Admin {
-    String name;
-    String password;
+    private String name;
+    private String password;
 
     public Admin() {
     }
@@ -26,5 +26,13 @@ public class Admin {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "Admin{" +
+                "name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

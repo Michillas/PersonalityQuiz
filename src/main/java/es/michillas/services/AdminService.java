@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import es.michillas.models.Usuario;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,7 +18,7 @@ public class AdminService {
 
     DatabaseConnection mysql = new DatabaseConnection();
     public List<Admin> getAllAdmins() throws SQLException {
-        List<Admin> adminList = new ArrayList<>();
+        List<Admin> admins = new ArrayList<>();
         String sql = "SELECT * FROM `admin`";
         try (Connection connection = mysql.connect();
              PreparedStatement statement = connection.prepareStatement(sql);
@@ -27,29 +28,27 @@ public class AdminService {
                         resultSet.getString("name"),
                         resultSet.getString("password")
                 );
-                adminList.add(admin);
+                admins.add(admin);
             }
         }
-        return adminList;
+        return admins;
     }
 
-    public List<Admin> getAdminsByName(String type) throws SQLException {
-        List<Admin> adminList = new ArrayList<>();
-        String sql = "SELECT * FROM `admin` WHERE name = ?";
+    public Admin getAdminByName(String name) throws SQLException {
+        String sql = "SELECT * FROM usuarios WHERE name = ?";
         try (Connection connection = mysql.connect();
              PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setString(1, type);
+            statement.setString(1, name);
             try (ResultSet resultSet = statement.executeQuery()) {
-                while (resultSet.next()) {
+                if (resultSet.next()) {
                     Admin admin = new Admin(
                             resultSet.getString("name"),
                             resultSet.getString("password")
                     );
-                    adminList.add(admin);
                 }
             }
         }
-        return adminList;
+        return null;
     }
 
     public void createAdmin(Admin admin) throws SQLException {

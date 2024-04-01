@@ -6,7 +6,6 @@ import es.michillas.services.UsuarioService ;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
@@ -20,10 +19,16 @@ public class UsuarioController {
     private UsuarioService usuarioService;
 
     @GetMapping("/{id}")
-    public String getUsuario(@PathVariable int id, Model model) throws SQLException {
-        Usuario usuario = usuarioService.getUsuarioById(id);
-        model.addAttribute("usuario", usuario);
-        return "usuario"; // Assuming you have a Thymeleaf template named "usuario.html"
+    public ResponseEntity<Usuario> getUsuarioById(@PathVariable("id") int id) {
+        try {
+            Usuario usuario = usuarioService.getUsuarioById(id);
+            if (usuario != null) {
+                return ResponseEntity.ok().body(usuario);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
     }
 
     @GetMapping("/list")
@@ -38,21 +43,17 @@ public class UsuarioController {
     }
 
     @PostMapping("/create")
-    public String createUsuario(@RequestBody Usuario usuario) throws SQLException {
-        //System.out.println(usuario.toString());
+    public void createUsuario(@RequestBody Usuario usuario) throws SQLException {
         usuarioService.createUsuario(usuario);
-        return "redirect:/usuarios/list";
     }
 
     @PostMapping("/update")
-    public String updateUsuario(@RequestBody Usuario usuario) throws SQLException {
+    public void updateUsuario(@RequestBody Usuario usuario) throws SQLException {
         usuarioService.updateUsuario(usuario);
-        return "redirect:/usuarios/list";
     }
 
     @PostMapping("/delete/{id}")
-    public String deleteUsuario(@PathVariable int id) throws SQLException {
+    public void deleteUsuario(@PathVariable int id) throws SQLException {
         usuarioService.deleteUsuario(id);
-        return "redirect:/usuarios/list";
     }
 }

@@ -17,7 +17,7 @@ public class CharacterService {
 
     DatabaseConnection mysql = new DatabaseConnection();
     public List<Character> getAllCharacters() throws SQLException {
-        List<Character> characterList = new ArrayList<>();
+        List<Character> characters = new ArrayList<>();
         String sql = "SELECT * FROM `character`";
         try (Connection connection = mysql.connect();
              PreparedStatement statement = connection.prepareStatement(sql);
@@ -28,14 +28,14 @@ public class CharacterService {
                         resultSet.getString("mbti"),
                         resultSet.getString("img")
                 );
-                characterList.add(character);
+                characters.add(character);
             }
         }
-        return characterList;
+        return characters;
     }
 
     public List<Character> getCharactersByMbti(String type) throws SQLException {
-        List<Character> characterList = new ArrayList<>();
+        List<Character> characters = new ArrayList<>();
         String sql = "SELECT * FROM `character` WHERE mbti = ?";
         try (Connection connection = mysql.connect();
              PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -47,11 +47,11 @@ public class CharacterService {
                             resultSet.getString("mbti"),
                             resultSet.getString("img")
                     );
-                    characterList.add(character);
+                    characters.add(character);
                 }
             }
         }
-        return characterList;
+        return characters;
     }
 
     public void createCharacter(Character character) throws SQLException {

@@ -2,14 +2,13 @@ package es.michillas.models;
 
 public class Usuario {
     private int id;
-
     private String username;
     private String mbti;
 
-    private int focus; /* 0 - Extra / 100 - Intro */
-    private int information; /* 0 - Sensing / 100 - Intuition */
-    private int decisions; /* 0 - Thinking / 100 - Feeling */
-    private int outerlife; /* 0 - Judging / 100 - Perceiving */
+    private int focus;
+    private int information;
+    private int decisions;
+    private int outerlife;
 
     public Usuario() {
     }

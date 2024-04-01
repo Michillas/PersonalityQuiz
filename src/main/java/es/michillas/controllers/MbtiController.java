@@ -46,24 +46,22 @@ public class MbtiController {
     }
 
     @PostMapping("/create")
-    public String createMbti(@ModelAttribute Mbti mbti) {
+    public void createMbti(@ModelAttribute Mbti mbti) {
         try {
             mbtiService.createMbti(mbti);
         } catch (SQLException e) {
             // Handle SQL Exception
             e.printStackTrace();
         }
-        return "redirect:/mbtis/list";
     }
 
     @PostMapping("/delete")
-    public String deleteMbti(@RequestParam String mbti) {
+    public void deleteMbti(@RequestParam String mbti) {
         try {
             mbtiService.deleteMbti(mbti);
         } catch (SQLException e) {
             // Handle SQL Exception
             e.printStackTrace();
         }
-        return "redirect:/mbtis/list";
     }
 }

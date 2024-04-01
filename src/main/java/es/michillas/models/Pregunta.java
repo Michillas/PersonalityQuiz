@@ -1,13 +1,13 @@
 package es.michillas.models;
 
-public class Preguntas {
+public class Pregunta {
     private String question;
-    private String type; // focus, information, decisions, outerlife
+    private String type;
 
-    public Preguntas() {
+    public Pregunta() {
     }
 
-    public Preguntas(String question, String type) {
+    public Pregunta(String question, String type) {
         this.question = question;
         this.type = type;
     }
@@ -30,7 +30,7 @@ public class Preguntas {
 
     @Override
     public String toString() {
-        return "Preguntas{" +
+        return "Pregunta{" +
                 "question='" + question + '\'' +
                 ", type='" + type + '\'' +
                 '}';

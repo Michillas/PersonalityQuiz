@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.ui.Model;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -34,15 +33,16 @@ public class AdminController {
     }
 
     @GetMapping("/{name}")
-    public String getAdminsByName(@PathVariable String name, Model model) {
+    public ResponseEntity<Admin> getAdminByName(@PathVariable("name") String name) {
         try {
-            List<Admin> admin = adminService.getAdminsByName(name);
-            model.addAttribute("admin", admin);
+            Admin admin = adminService.getAdminByName(name);
+            if (admin != null) {
+                return ResponseEntity.ok().body(admin);
+            }
         } catch (SQLException e) {
-            // Handle SQL Exception
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
-        return "adminList";
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
     }
 
     @PostMapping("/create")

@@ -17,7 +17,7 @@ public class MbtiService {
 
     DatabaseConnection mysql = new DatabaseConnection();
     public List<Mbti> getAllMbtis() throws SQLException {
-        List<Mbti> mbtiList = new ArrayList<>();
+        List<Mbti> mbtis = new ArrayList<>();
         String sql = "SELECT * FROM `mbti`";
         try (Connection connection = mysql.connect();
              PreparedStatement statement = connection.prepareStatement(sql);
@@ -28,10 +28,10 @@ public class MbtiService {
                         resultSet.getString("name"),
                         resultSet.getString("description")
                 );
-                mbtiList.add(mbti);
+                mbtis.add(mbti);
             }
         }
-        return mbtiList;
+        return mbtis;
     }
 
     public Mbti getMbtiByMbti(String mbti) throws SQLException {

@@ -1,9 +1,9 @@
 package es.michillas.models;
 
 public class Mbti {
-    String letters;
-    String name;
-    String description;
+    private String letters;
+    private String name;
+    private String description;
 
     public Mbti() {
     }
@@ -38,4 +38,12 @@ public class Mbti {
         this.description = description;
     }
 
+    @Override
+    public String toString() {
+        return "Mbti{" +
+                "letters='" + letters + '\'' +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }

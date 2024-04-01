@@ -1,7 +1,6 @@
 package es.michillas.models;
 
 public class Character {
-
     private String mbti;
     private String name;
     private String img;
@@ -37,5 +36,14 @@ public class Character {
 
     public void setImg(String img) {
         this.img = img;
+    }
+
+    @Override
+    public String toString() {
+        return "Character{" +
+                "mbti='" + mbti + '\'' +
+                ", name='" + name + '\'' +
+                ", img='" + img + '\'' +
+                '}';
     }
 }

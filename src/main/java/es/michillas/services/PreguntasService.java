@@ -1,7 +1,7 @@
 package es.michillas.services;
 
 import es.michillas.DatabaseConnection;
-import es.michillas.models.Preguntas;
+import es.michillas.models.Pregunta;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,43 +17,43 @@ public class PreguntasService {
 
     DatabaseConnection mysql = new DatabaseConnection();
 
-    public List<Preguntas> getAllQuestions() throws SQLException {
-        List<Preguntas> preguntasList = new ArrayList<>();
+    public List<Pregunta> getAllQuestions() throws SQLException {
+        List<Pregunta> preguntas = new ArrayList<>();
         String sql = "SELECT * FROM preguntas";
         try (Connection connection = mysql.connect();
              PreparedStatement statement = connection.prepareStatement(sql);
              ResultSet resultSet = statement.executeQuery()) {
             while (resultSet.next()) {
-                Preguntas pregunta = new Preguntas(
+                Pregunta pregunta = new Pregunta(
                         resultSet.getString("question"),
                         resultSet.getString("type")
                 );
-                preguntasList.add(pregunta);
+                preguntas.add(pregunta);
             }
         }
-        return preguntasList;
+        return preguntas;
     }
 
-    public List<Preguntas> getQuestionsByType(String type) throws SQLException {
-        List<Preguntas> preguntasList = new ArrayList<>();
+    public List<Pregunta> getQuestionsByType(String type) throws SQLException {
+        List<Pregunta> preguntas = new ArrayList<>();
         String sql = "SELECT * FROM preguntas WHERE type = ?";
         try (Connection connection = mysql.connect();
              PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, type);
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
-                    Preguntas pregunta = new Preguntas(
+                    Pregunta pregunta = new Pregunta(
                             resultSet.getString("question"),
                             resultSet.getString("type")
                     );
-                    preguntasList.add(pregunta);
+                    preguntas.add(pregunta);
                 }
             }
         }
-        return preguntasList;
+        return preguntas;
     }
 
-    public void createQuestion(Preguntas pregunta) throws SQLException {
+    public void createQuestion(Pregunta pregunta) throws SQLException {
         String sql = "INSERT INTO preguntas (question, type) VALUES (?, ?)";
         try (Connection connection = mysql.connect();
              PreparedStatement statement = connection.prepareStatement(sql)) {

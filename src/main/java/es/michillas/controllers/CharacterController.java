@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.ui.Model;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -34,36 +33,34 @@ public class CharacterController {
     }
 
     @GetMapping("/{type}")
-    public String getCharactersByMbti(@PathVariable String type, Model model) {
+    public ResponseEntity<List<Character>> getCharactersByMbti(@PathVariable("type") String type) {
         try {
-            List<Character> character = characterService.getCharactersByMbti(type);
-            model.addAttribute("character", character);
+            List<Character> Characters = characterService.getCharactersByMbti(type);
+            return ResponseEntity.ok().body(Characters);
         } catch (SQLException e) {
             // Handle SQL Exception
             e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
-        return "characterList";
     }
 
     @PostMapping("/create")
-    public String createCharacter(@ModelAttribute Character character) {
+    public void createCharacter(@ModelAttribute Character character) {
         try {
             characterService.createCharacter(character);
         } catch (SQLException e) {
             // Handle SQL Exception
             e.printStackTrace();
         }
-        return "redirect:/characters/list";
     }
 
     @PostMapping("/delete")
-    public String deleteCharacter(@RequestParam String character) {
+    public void deleteCharacter(@RequestParam String character) {
         try {
             characterService.deleteCharacter(character);
         } catch (SQLException e) {
             // Handle SQL Exception
             e.printStackTrace();
         }
-        return "redirect:/characters/list";
     }
 }
