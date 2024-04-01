@@ -1,8 +1,8 @@
 package es.michillas.models;
 
 public class Preguntas {
-    String question;
-    String type; // focus, information, decisions, outerlife
+    private String question;
+    private String type; // focus, information, decisions, outerlife
 
     public Preguntas() {
     }
@@ -26,5 +26,13 @@ public class Preguntas {
 
     public void setQuestion(String question) {
         this.question = question;
+    }
+
+    @Override
+    public String toString() {
+        return "Preguntas{" +
+                "question='" + question + '\'' +
+                ", type='" + type + '\'' +
+                '}';
     }
 }
