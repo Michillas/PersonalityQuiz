@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-03-2024 a las 22:41:14
+-- Tiempo de generación: 02-04-2024 a las 03:29:47
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -71,7 +71,7 @@ INSERT INTO `character` (`id`, `name`, `mbti`, `img`) VALUES
 (18, 'Johnny Depp', 'INFP', 'https://static1.personality-database.com/profile_images/7cb400b46cb04292b6fa726424a81170.png'),
 (19, 'L', 'INTP', 'https://static1.personality-database.com/profile_images/2937ef8b276e4d0aaf20d5f9f2e2a5a1.png'),
 (20, 'Sherlock Holmes', 'INTP', 'https://static1.personality-database.com/profile_images/29d2d695e99c47e69ff65a1ffa76e40c.png'),
-(21, 'Tomura Shigaraki (MHA)', 'INTP', 'https://static1.personality-database.com/profile_images/845be3782e6449c5940d5f9398f3c604.png'),
+(21, 'Dipper Pines', 'INTP', 'https://static1.personality-database.com/profile_images/5ffca5156f844e81969f603e08931a19.png'),
 (22, 'Elon Musk', 'INTJ', 'https://static1.personality-database.com/profile_images/3b610d12ac8b484182f13aa203daa2dc.png'),
 (23, 'Walter White', 'INTJ', 'https://static1.personality-database.com/profile_images/7160a84dd745441d92599d44a0282d17.png'),
 (24, 'Thanos', 'INTJ', 'https://static1.personality-database.com/profile_images/c815f33102a74f89b6456a2789697460.png'),
@@ -230,6 +230,13 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `username`, `mbti`, `focus`, `information`, `decisions`, `outerlife`) VALUES
+(1, 'Michillas', 'INTP', -1, 0, 0, 0);
+
+--
 -- Índices para tablas volcadas
 --
 
@@ -296,7 +303,7 @@ ALTER TABLE `preguntas`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
