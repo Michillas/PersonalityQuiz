@@ -34,7 +34,7 @@ public class AdminService {
     }
 
     public Admin getAdminByName(String name) throws SQLException {
-        String sql = "SELECT * FROM usuarios WHERE name = ?";
+        String sql = "SELECT * FROM `admin` WHERE name = ?";
         try (Connection connection = mysql.connect();
              PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, name);
@@ -44,6 +44,7 @@ public class AdminService {
                             resultSet.getString("name"),
                             resultSet.getString("password")
                     );
+                    return admin;
                 }
             }
         }

@@ -4,6 +4,10 @@ import es.michillas.models.Admin;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
@@ -14,6 +18,7 @@ public class AuthService {
     @Autowired
     private AdminService adminService;
 
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
 

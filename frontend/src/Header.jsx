@@ -1,12 +1,38 @@
+/* eslint-disable no-undef */
 import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link as NextLink, Button} from "@nextui-org/react";
 import { MichillasLogo } from "./assets/MichillasLogo";
 
+import { useEffect } from "react";
+
 import { useLocation, useNavigate } from 'react-router-dom';
+
+import { useAuth } from "./components/auth/AuthContext";
 
 export default function Header() {
   const location = useLocation();
-
   const navigate = useNavigate();
+
+  const { isLoggedIn, logout } = useAuth();
+
+  const serverIP = process.env.REACT_APP_SERVERIP;
+
+  useEffect(() => {
+    const checkAdminStatus = async () => {
+      try {
+        const response = await fetch(`${serverIP}/admins/check-user-role`);
+        if (response.ok) {
+          const data = await response.json();
+          setIsAdmin(data.isAdmin);
+        } else {
+          console.error('Failed to fetch admin status:', response.statusText);
+        }
+      } catch (error) {
+        console.error('Error fetching admin status:', error);
+      }
+    };
+
+    checkAdminStatus();
+  }, []);
   
   return (
     <Navbar isBordered>
@@ -30,22 +56,35 @@ export default function Header() {
             Mbtis
           </NextLink>
         </NavbarItem>
-        <NavbarItem isActive={location.pathname === "/admin"}>
-          <NextLink color={location.pathname === "/admin" ? "#" : "foreground"} href="/admin">
-            Admin
-          </NextLink>
-        </NavbarItem>
+        {isLoggedIn &&
+          <NavbarItem isActive={location.pathname === "/admin"}>
+            <NextLink color={location.pathname === "/admin" ? "#" : "foreground"} href="/admin">
+              Admin
+            </NextLink>
+          </NavbarItem>
+        }
       </NavbarContent>
+      {!isLoggedIn &&
       <NavbarContent justify="end">
-        <NavbarItem className="hidden lg:flex">
-          <NextLink href="login">Iniciar sesión</NextLink>
-        </NavbarItem>
-        <NavbarItem>
-          <Button color="primary" variant="flat" onPress={() => navigate('/register')} >
-            Registrarse
-          </Button>
-        </NavbarItem>
+          <NavbarItem className="hidden lg:flex">
+            <NextLink href="login">Iniciar sesión</NextLink>
+          </NavbarItem>
+          <NavbarItem>
+            <Button color="primary" variant="flat" onPress={() => navigate('/register')} >
+              Registrarse
+            </Button>
+          </NavbarItem>
       </NavbarContent>
+      }
+      {isLoggedIn &&
+      <NavbarContent justify="end">
+          <NavbarItem>
+            <Button color="primary" variant="flat" onPress={() => logout} >
+              Cerrar sesión
+            </Button>
+          </NavbarItem>
+      </NavbarContent>
+      }
     </Navbar>
   );
 }

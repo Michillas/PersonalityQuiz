@@ -10,9 +10,11 @@ import Login from "./pages/login/login.jsx";
 import Register from "./pages/login/register.jsx";
 import NotFound from "./pages/notfound/notfound.jsx";
 
+import { AuthProvider } from "./components/auth/AuthContext.jsx";
+
 function App() {
   return (
-    <>
+    <AuthProvider>
       <Header />
       <Routes>
         <Route path="/" element={<Index />} />
@@ -24,7 +26,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </>
+    </AuthProvider>
   );
 }
 

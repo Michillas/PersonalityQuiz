@@ -1,6 +1,7 @@
 package es.michillas.controllers;
 
 import es.michillas.models.Admin;
+import es.michillas.models.Usuario;
 import es.michillas.services.AdminService;
 import es.michillas.services.AuthService;
 
@@ -13,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -26,34 +28,35 @@ public class AdminController {
     private AuthService authService;
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestParam String username, @RequestParam String password) {
+    public ResponseEntity<?> login(@RequestBody Admin admin) {
         try {
-            boolean isAuthenticated = authService.authenticate(username, password);
+            boolean isAuthenticated = authService.authenticate(admin.getName(), admin.getPassword());
             if (isAuthenticated) {
-                return ResponseEntity.ok("Login successful");
+                return ResponseEntity.ok("{\"message\": \"Iniciado sesión correctamente\"}");
             } else {
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username or password");
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("{\"message\": \"Usuario o contraseña incorrecto\"}");
             }
         } catch (SQLException e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to authenticate user");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("{\"message\": \"Error iniciando sesión\"}");
         }
     }
 
     @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestParam String username, @RequestParam String password) {
+    public ResponseEntity<?> register(@RequestBody Admin admin) {
         try {
-            if (adminService.getAdminByName(username) != null) {
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Username already exists");
+            if (adminService.getAdminByName(admin.getName()) != null) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"message\": \"El nombre de usuario ya existe\"}");
             }
 
-            String encodedPassword = authService.encode(password);
+            String encodedPassword = authService.encode(admin.getPassword());
 
-            Admin admin = new Admin(username, password);
-            adminService.createAdmin(admin);
+            Admin newAdmin = new Admin(admin.getName(), encodedPassword);
+            adminService.createAdmin(newAdmin);
 
-            return ResponseEntity.ok("User registered successfully");
+            return ResponseEntity.ok("{\"message\": \"Usuario registrado correctamente\"}");
         } catch (SQLException e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to register user");
+            System.out.println("ERROR SQL: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("{\"message\": \"Error registrando al usuario\"}");
         }
     }
 
@@ -82,24 +85,22 @@ public class AdminController {
     }
 
     @PostMapping("/create")
-    public String createAdmin(@ModelAttribute Admin admin) {
+    public void createAdmin(@ModelAttribute Admin admin) {
         try {
             adminService.createAdmin(admin);
         } catch (SQLException e) {
             // Handle SQL Exception
             e.printStackTrace();
         }
-        return "redirect:/admins/list";
     }
 
     @PostMapping("/delete")
-    public String deleteAdmin(@RequestParam String admin) {
+    public void deleteAdmin(@RequestParam String admin) {
         try {
             adminService.deleteAdmin(admin);
         } catch (SQLException e) {
             // Handle SQL Exception
             e.printStackTrace();
         }
-        return "redirect:/admins/list";
     }
 }
