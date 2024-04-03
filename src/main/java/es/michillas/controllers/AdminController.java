@@ -2,6 +2,7 @@ package es.michillas.controllers;
 
 import es.michillas.models.Admin;
 import es.michillas.services.AdminService;
+import es.michillas.services.AuthService;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +21,41 @@ public class AdminController {
 
     @Autowired
     private AdminService adminService;
+
+    @Autowired
+    private AuthService authService;
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestParam String username, @RequestParam String password) {
+        try {
+            boolean isAuthenticated = authService.authenticate(username, password);
+            if (isAuthenticated) {
+                return ResponseEntity.ok("Login successful");
+            } else {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username or password");
+            }
+        } catch (SQLException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to authenticate user");
+        }
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity<?> register(@RequestParam String username, @RequestParam String password) {
+        try {
+            if (adminService.getAdminByName(username) != null) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Username already exists");
+            }
+
+            String encodedPassword = authService.encode(password);
+
+            Admin admin = new Admin(username, password);
+            adminService.createAdmin(admin);
+
+            return ResponseEntity.ok("User registered successfully");
+        } catch (SQLException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to register user");
+        }
+    }
 
     @GetMapping("/list")
     public ResponseEntity<List<Admin>> getAllAdmins() {
