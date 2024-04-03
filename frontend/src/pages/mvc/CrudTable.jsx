@@ -24,7 +24,6 @@ import {DeleteIcon} from "./icons/DeleteIcon";
 import {EyeIcon} from "./icons/EyeIcon";
 import {SearchIcon} from "./icons/SearchIcon";
 import {ChevronDownIcon} from "./icons/ChevronDownIcon";
-import {capitalize} from "./Utils";
 
 const INITIAL_VISIBLE_COLUMNS = ["id", "name", "mbti", "actions"];
 
@@ -171,6 +170,10 @@ export default function CrudTable() {
     setFilterValue("")
     setPage(1)
   },[])
+
+  function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }  
 
   const topContent = React.useMemo(() => {
     return (

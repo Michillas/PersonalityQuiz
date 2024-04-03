@@ -21,19 +21,23 @@ export default function Result() {
 
     const fetchMbti = async () => {
         try {
-            const response = await fetch(`${serverIP}/mbtis/` + mbti.toUpperCase);
+            const response = await fetch(`${serverIP}/mbtis/` + capitalize(mbti));
             const data = await response.json();
             setMbtiType(data);
         } catch (error) {
             console.error('Error fetching mbtis:', error);
         }
     };
+
+    function capitalize(str) {
+        return str.toUpperCase();
+    }
     
     return( 
         <div className="min-h-[90.8vh] flex flex-col justify-center items-center">
             <div className='flex flex-col justify-center items-center mt-40'>
                 <h2 className="text-3xl">Eres</h2>
-                <h1 className="text-9xl mb-8 ml-3">{mbti.toUpperCase}</h1>
+                <h1 className="text-9xl mb-8 ml-3">{capitalize(mbti)}</h1>
                 <Divider />
             </div>
             <Card className='mt-8'>
@@ -45,7 +49,7 @@ export default function Result() {
             </Card>
 
             <div className='my-8 text-4xl font-bold text-center'>Personajes famosos</div>
-            <Characters mbtiType={mbti} />
+            <Characters mbtiType={capitalize(mbti)} />
 
             <div className='mt-16 mb-4 text-slate-600'>© 2024 Michillas</div>
         </div>
