@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-04-2024 a las 03:29:47
+-- Tiempo de generación: 03-04-2024 a las 11:08:42
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -32,6 +32,13 @@ CREATE TABLE `admin` (
   `name` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `admin`
+--
+
+INSERT INTO `admin` (`id`, `name`, `password`) VALUES
+(1, 'test', '$2a$10$bPVucNQCOL0OkGI/sk3wLOSdDiigecHXtcrYnwGvDQ0ouiF9LMgD2');
 
 -- --------------------------------------------------------
 
@@ -159,7 +166,7 @@ INSERT INTO `preguntas` (`id`, `question`, `type`) VALUES
 (5, 'Sueles mantener la calma, incluso bajo mucha presión.', 'focus'),
 (6, 'En los actos sociales, rara vez intentas presentarte a gente nueva y sueles hablar con los que ya conoces.', 'focus'),
 (7, 'Prefieres terminar por completo un proyecto antes de empezar otro.', 'outerlife'),
-(8, 'Eres muy sentimental.', 'focus'),
+(8, 'Controlas más tus emociones que ellas a ti.', 'decisions'),
 (9, 'Te gusta utilizar herramientas de organización como agendas y listas.', 'outerlife'),
 (10, 'Incluso un pequeño error puede hacerte dudar de tus capacidades y conocimientos generales.', 'decisions'),
 (11, 'Te sientes cómodo acercándote a alguien que te parece interesante y entablando una conversación.', 'focus'),
@@ -198,11 +205,11 @@ INSERT INTO `preguntas` (`id`, `question`, `type`) VALUES
 (44, 'Si tus planes se ven interrumpidos, tu máxima prioridad es retomarlos lo antes posible.', 'outerlife'),
 (45, 'Todavía te molestan los errores que cometiste hace mucho tiempo.', 'decisions'),
 (46, 'Rara vez contemplas las razones de la existencia humana o el sentido de la vida.', 'outerlife'),
-(47, 'Tus emociones te controlan más que tú a ellas.', 'focus'),
+(47, 'Controlas más tus emociones que ellas a ti.', 'decisions'),
 (48, 'Te cuidas mucho de no hacer quedar mal a la gente, incluso cuando es completamente culpa suya.', 'decisions'),
 (49, 'Tu estilo personal de trabajo se acerca más a las explosiones espontáneas de energía que a los esfuerzos organizados y constantes.', 'outerlife'),
 (50, 'Cuando alguien tiene una buena opinión de ti, te preguntas cuánto tardará en sentirse decepcionado contigo.', 'focus'),
-(51, 'Te encantaría un trabajo en el que tuvieras que trabajar solo la mayor parte del tiempo.', 'focus'),
+(51, 'Te encantaría un trabajo en el que tuvieras que trabajar en equipo la mayor parte del tiempo.', 'focus'),
 (52, 'Crees que reflexionar sobre cuestiones filosóficas abstractas es una pérdida de tiempo.', 'decisions'),
 (53, 'Te sientes más atraído por lugares con ambientes bulliciosos y ajetreados que por lugares tranquilos e íntimos.', 'focus'),
 (54, 'Sabes a primera vista cómo se siente una persona.', 'information'),
@@ -234,7 +241,10 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `username`, `mbti`, `focus`, `information`, `decisions`, `outerlife`) VALUES
-(1, 'Michillas', 'INTP', -1, 0, 0, 0);
+(1, 'Michillas', 'INTP', -1, 0, 0, 0),
+(2, 'jj', 'ESFP', 43, 12, 20, 18),
+(3, 'test', 'ENTP', 0, 0, 0, 0),
+(4, 'Vitaliy', 'ENTP', 4, 7, 9, 18);
 
 --
 -- Índices para tablas volcadas
@@ -279,7 +289,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `character`
@@ -303,7 +313,7 @@ ALTER TABLE `preguntas`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

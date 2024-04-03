@@ -2,8 +2,6 @@
 import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link as NextLink, Button} from "@nextui-org/react";
 import { MichillasLogo } from "./assets/MichillasLogo";
 
-import { useEffect } from "react";
-
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { useAuth } from "./components/auth/AuthContext";
@@ -14,26 +12,6 @@ export default function Header() {
 
   const { isLoggedIn, logout } = useAuth();
 
-  const serverIP = process.env.REACT_APP_SERVERIP;
-
-  useEffect(() => {
-    const checkAdminStatus = async () => {
-      try {
-        const response = await fetch(`${serverIP}/admins/check-user-role`);
-        if (response.ok) {
-          const data = await response.json();
-          setIsAdmin(data.isAdmin);
-        } else {
-          console.error('Failed to fetch admin status:', response.statusText);
-        }
-      } catch (error) {
-        console.error('Error fetching admin status:', error);
-      }
-    };
-
-    checkAdminStatus();
-  }, []);
-  
   return (
     <Navbar isBordered>
       <NavbarBrand>

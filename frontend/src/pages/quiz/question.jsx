@@ -1,28 +1,18 @@
 /* eslint-disable react/prop-types */
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { RadioGroup, Radio, Divider } from "@nextui-org/react";
 
 export default function Question(props) {
     const [selectedValue, setSelectedValue] = useState(0);
+    const [initialValue, setInitialValue] = useState(0);
+
+    useEffect(() => {
+        setInitialValue(props.initialValue);
+    }, [props.initialValue]);
 
     const handleValueChange = (value) => {
         setSelectedValue(value);
-        switch (props.type) {
-            case "focus":
-                props.changeValue(props.setFocus, value);
-                break;
-            case "information":
-                props.changeValue(props.setInformation, value);
-                break;
-            case "decisions":
-                props.changeValue(props.setDecisions, value);
-                break;
-            case "outerlife":
-                props.changeValue(props.setOuterlife, value);
-                break;
-            default:
-                break;
-        }
+        props.changeValue(props.setType, initialValue, value);
     };
 
     return (

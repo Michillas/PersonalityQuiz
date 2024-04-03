@@ -36,14 +36,14 @@ export default function Quiz() {
     const [decisions, setDecisions] = useState(0);
     const [outerlife, setOuterlife] = useState(0);
 
-    const changeValue = (setState, value) => {
-        setState(prevState => {
-            // Parse prevState as a number to ensure correct arithmetic operation
-            const parsedPrevState = parseInt(prevState, 10);
-            // Parse value as a number to ensure correct arithmetic operation
+    const changeValue = (setType, initialValue, value) => {
+        setType(prevState => {
+            // Parse initialValue and value as numbers to ensure correct arithmetic operation
+            const parsedInitialValue = parseInt(initialValue, 10);
             const parsedValue = parseInt(value, 10);
-            // Perform arithmetic operation and return the new state
-            return parsedPrevState + parsedValue;
+    
+            // Perform arithmetic operation based on the initial state and the selected value
+            return prevState + (parsedValue - parsedInitialValue);
         });
     };
 
@@ -56,7 +56,7 @@ export default function Quiz() {
     
         const mbtiType = [
             focusSum >= 0 ? 'E' : 'I',
-            informationSum >= 0 ? 'N' : 'S',
+            informationSum >= 0 ? 'S' : 'N',
             decisionsSum >= 0 ? 'T' : 'F',
             outerlifeSum >= 0 ? 'P' : 'J'
         ].join('');
@@ -111,7 +111,7 @@ export default function Quiz() {
             </div>
 
             {questions.map((pregunta, index) => (
-                <Question key={index} title={pregunta.question} type={pregunta.type} changeValue={changeValue} setFocus={setFocus} setInformation={setInformation} setDecisions={setDecisions} setOuterlife={setOuterlife} />
+                <Question key={index} title={pregunta.question} type={pregunta.type} initialValue={0} changeValue={changeValue} setFocus={setFocus} setInformation={setInformation} setDecisions={setDecisions} setOuterlife={setOuterlife} setType={setType} />
             ))}
             <div className="flex flex-col items-center mt-6 pb-4">
                 <Input id="nombre" type="text" variant="flat" label="Nombre" placeholder="Escribe tu nombre" className="max-w-64" value={name} onChange={(e) => setName(e.target.value)} />
