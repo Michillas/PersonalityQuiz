@@ -5,7 +5,7 @@ import { Card, CardBody, Divider } from '@nextui-org/react';
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 
-import Characters from "../mbti/characters";
+import Characters from "../mbti/Characters";
 
 export default function Result() {
 
