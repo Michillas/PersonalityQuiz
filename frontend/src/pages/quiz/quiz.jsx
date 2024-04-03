@@ -41,6 +41,7 @@ export default function Quiz() {
             // Parse initialValue and value as numbers to ensure correct arithmetic operation
             const parsedInitialValue = parseInt(initialValue, 10);
             const parsedValue = parseInt(value, 10);
+            console.log(parsedValue)
     
             // Perform arithmetic operation based on the initial state and the selected value
             return prevState + (parsedValue - parsedInitialValue);
@@ -49,18 +50,13 @@ export default function Quiz() {
 
     const calculateMbti = () => {
         
-        const focusSum = focus;
-        const informationSum = information;
-        const decisionsSum = decisions;
-        const outerlifeSum = outerlife;
-    
         const mbtiType = [
-            focusSum >= 0 ? 'E' : 'I',
-            informationSum >= 0 ? 'S' : 'N',
-            decisionsSum >= 0 ? 'T' : 'F',
-            outerlifeSum >= 0 ? 'P' : 'J'
+            focus >= 0 ? 'E' : 'I',
+            information >= 0 ? 'S' : 'N',
+            decisions >= 0 ? 'T' : 'F',
+            outerlife >= 0 ? 'P' : 'J'
         ].join('');
-        
+        console.log(focus + "/" + information + "/" + decisions + "/" + outerlife)
         console.log(mbtiType)
         return mbtiType;
     }
