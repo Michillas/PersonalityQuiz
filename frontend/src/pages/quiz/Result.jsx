@@ -21,7 +21,7 @@ export default function Result() {
 
     const fetchMbti = async () => {
         try {
-            const response = await fetch(`${serverIP}/mbtis/` + mbti);
+            const response = await fetch(`${serverIP}/mbtis/` + mbti.toUpperCase);
             const data = await response.json();
             setMbtiType(data);
         } catch (error) {
@@ -33,7 +33,7 @@ export default function Result() {
         <div className="min-h-[90.8vh] flex flex-col justify-center items-center">
             <div className='flex flex-col justify-center items-center mt-40'>
                 <h2 className="text-3xl">Eres</h2>
-                <h1 className="text-9xl mb-8 ml-3">{mbti}</h1>
+                <h1 className="text-9xl mb-8 ml-3">{mbti.toUpperCase}</h1>
                 <Divider />
             </div>
             <Card className='mt-8'>
