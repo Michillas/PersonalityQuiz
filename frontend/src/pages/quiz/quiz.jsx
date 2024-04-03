@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { Input, Button, Divider } from "@nextui-org/react";
-import Question from "./question";
+import Question from "./Question";
 
 export default function Quiz() {
 

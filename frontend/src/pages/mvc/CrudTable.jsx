@@ -24,7 +24,7 @@ import {DeleteIcon} from "./icons/DeleteIcon";
 import {EyeIcon} from "./icons/EyeIcon";
 import {SearchIcon} from "./icons/SearchIcon";
 import {ChevronDownIcon} from "./icons/ChevronDownIcon";
-import {capitalize} from "./utils";
+import {capitalize} from "./Utils";
 
 const INITIAL_VISIBLE_COLUMNS = ["id", "name", "mbti", "actions"];
 

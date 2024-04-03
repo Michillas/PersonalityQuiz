@@ -1,4 +1,4 @@
-import Characters from "./characters";
+import Characters from "./Characters";
 
 import { Divider } from "@nextui-org/react";
 

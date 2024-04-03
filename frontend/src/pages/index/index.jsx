@@ -1,6 +1,6 @@
 import { Divider, Card, CardBody, Image } from '@nextui-org/react'
 
-import Characters from "../mbti/characters";
+import Characters from "../mbti/Characters";
 
 export default function Index() {
     return ( 

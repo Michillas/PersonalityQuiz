@@ -1,7 +1,6 @@
 package es.michillas.controllers;
 
 import es.michillas.models.Admin;
-import es.michillas.models.Usuario;
 import es.michillas.services.AdminService;
 import es.michillas.services.AuthService;
 
@@ -14,7 +13,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
-import java.util.Collections;
 import java.util.List;
 
 @RestController
