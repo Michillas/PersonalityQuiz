@@ -45,7 +45,7 @@ export default function Quiz() {
             // Perform arithmetic operation based on the initial state and the selected value
             return prevState + (parsedValue - parsedInitialValue);
         });
-    };
+    };    
 
     const calculateMbti = () => {
         
@@ -111,7 +111,17 @@ export default function Quiz() {
             </div>
 
             {questions.map((pregunta, index) => (
-                <Question key={index} title={pregunta.question} type={pregunta.type} initialValue={0} changeValue={changeValue} setFocus={setFocus} setInformation={setInformation} setDecisions={setDecisions} setOuterlife={setOuterlife} setType={setType} />
+                <Question 
+                key={index} 
+                title={pregunta.question} 
+                type={pregunta.type} 
+                initialValue={0} 
+                changeValue={changeValue} 
+                setFocus={setFocus} 
+                setInformation={setInformation} 
+                setDecisions={setDecisions} 
+                setOuterlife={setOuterlife} 
+                />
             ))}
             <div className="flex flex-col items-center mt-6 pb-4">
                 <Input id="nombre" type="text" variant="flat" label="Nombre" placeholder="Escribe tu nombre" className="max-w-64" value={name} onChange={(e) => setName(e.target.value)} />
