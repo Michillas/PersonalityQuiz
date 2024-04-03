@@ -31,10 +31,10 @@ export default function Quiz() {
         }
     };
 
-    const [focus, setFocus] = useState(0);
-    const [information, setInformation] = useState(0);
-    const [decisions, setDecisions] = useState(0);
-    const [outerlife, setOuterlife] = useState(0);
+    const [attitude, setAttitude] = useState(0);
+    const [perception, setPerception] = useState(0);
+    const [orientation, setOrientation] = useState(0);
+    const [behavior, setBehavior] = useState(0);
 
     const changeValue = (setType, initialValue, value) => {
         setType(prevState => {
@@ -51,12 +51,13 @@ export default function Quiz() {
     const calculateMbti = () => {
         
         const mbtiType = [
-            focus >= 0 ? 'E' : 'I',
-            information >= 0 ? 'S' : 'N',
-            decisions >= 0 ? 'T' : 'F',
-            outerlife >= 0 ? 'P' : 'J'
+            attitude >= 0 ? 'E' : 'I',
+            perception >= 0 ? 'S' : 'N',
+            orientation >= 0 ? 'T' : 'F',
+            behavior >= 0 ? 'P' : 'J'
         ].join('');
-        console.log(focus + "/" + information + "/" + decisions + "/" + outerlife)
+        
+        console.log(attitude + "/" + perception + "/" + orientation + "/" + behavior)
         console.log(mbtiType)
         return mbtiType;
     }
@@ -69,10 +70,10 @@ export default function Quiz() {
             const usuarioData = {
                 username: name,
                 mbti: mbtiType,
-                focus: focus,
-                information: information,
-                decisions: decisions,
-                outerlife: outerlife
+                attitude: attitude,
+                perception: perception,
+                orientation: orientation,
+                behavior: behavior
             };
 
             const response = await fetch(`${serverIP}/usuarios/create`, {
@@ -113,10 +114,10 @@ export default function Quiz() {
                 type={pregunta.type} 
                 initialValue={0} 
                 changeValue={changeValue} 
-                setFocus={setFocus} 
-                setInformation={setInformation} 
-                setDecisions={setDecisions} 
-                setOuterlife={setOuterlife} 
+                setAttitude={setAttitude} 
+                setPerception={setPerception} 
+                setOrientation={setOrientation} 
+                setBehavior={setBehavior} 
                 />
             ))}
             <div className="flex flex-col items-center mt-6 pb-4">

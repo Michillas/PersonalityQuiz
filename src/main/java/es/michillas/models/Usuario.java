@@ -5,22 +5,22 @@ public class Usuario {
     private String username;
     private String mbti;
 
-    private int focus;
-    private int information;
-    private int decisions;
-    private int outerlife;
+    private int attitude;
+    private int perception;
+    private int orientation;
+    private int behavior;
 
     public Usuario() {
     }
 
-    public Usuario(int id, String username, String mbti, int focus, int information, int decisions, int outerlife) {
+    public Usuario(int id, String username, String mbti, int attitude, int perception, int orientation, int behavior) {
         this.id = id;
         this.username = username;
         this.mbti = mbti;
-        this.focus = focus;
-        this.information = information;
-        this.decisions = decisions;
-        this.outerlife = outerlife;
+        this.attitude = attitude;
+        this.perception = perception;
+        this.orientation = orientation;
+        this.behavior = behavior;
     }
 
     public int getId() {
@@ -47,36 +47,36 @@ public class Usuario {
         this.mbti = mbti;
     }
 
-    public int getFocus() {
-        return focus;
+    public int getAttitude() {
+        return attitude;
     }
 
-    public void setFocus(int focus) {
-        this.focus = focus;
+    public void setAttitude(int attitude) {
+        this.attitude = attitude;
     }
 
-    public int getInformation() {
-        return information;
+    public int getPerception() {
+        return perception;
     }
 
-    public void setInformation(int information) {
-        this.information = information;
+    public void setPerception(int perception) {
+        this.perception = perception;
     }
 
-    public int getDecisions() {
-        return decisions;
+    public int getOrientation() {
+        return orientation;
     }
 
-    public void setDecisions(int decisions) {
-        this.decisions = decisions;
+    public void setOrientation(int orientation) {
+        this.orientation = orientation;
     }
 
-    public int getOuterlife() {
-        return outerlife;
+    public int getBehavior() {
+        return behavior;
     }
 
-    public void setOuterlife(int outerlife) {
-        this.outerlife = outerlife;
+    public void setBehavior(int behavior) {
+        this.behavior = behavior;
     }
 
     @Override
@@ -85,10 +85,10 @@ public class Usuario {
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", mbti='" + mbti + '\'' +
-                ", focus=" + focus +
-                ", information=" + information +
-                ", decisions=" + decisions +
-                ", outerlife=" + outerlife +
+                ", attitude=" + attitude +
+                ", perception=" + perception +
+                ", orientation=" + orientation +
+                ", behavior=" + behavior +
                 '}';
     }
 }

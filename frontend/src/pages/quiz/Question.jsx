@@ -13,17 +13,17 @@ export default function Question(props) {
     const handleValueChange = (value) => {
         setSelectedValue(value);
         switch (props.type) {
-            case "focus":
-                props.changeValue(props.setFocus, initialValue, value);
+            case "attitude":
+                props.changeValue(props.setAttitude, initialValue, value);
                 break;
-            case "information":
-                props.changeValue(props.setInformation, initialValue, value);
+            case "perception":
+                props.changeValue(props.setPerception, initialValue, value);
                 break;
-            case "decisions":
-                props.changeValue(props.setDecisions, initialValue, value);
+            case "orientation":
+                props.changeValue(props.setOrientation, initialValue, value);
                 break;
-            case "outerlife":
-                props.changeValue(props.setOuterlife, initialValue, value);
+            case "behavior":
+                props.changeValue(props.setBehavior, initialValue, value);
                 break;
             default:
                 break;

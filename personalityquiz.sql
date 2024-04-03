@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-04-2024 a las 11:08:42
+-- Tiempo de generación: 04-04-2024 a las 00:19:21
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -159,66 +159,66 @@ CREATE TABLE `preguntas` (
 --
 
 INSERT INTO `preguntas` (`id`, `question`, `type`) VALUES
-(1, 'Haces nuevos amigos con regularidad.', 'focus'),
-(2, 'Dedicas gran parte de tu tiempo libre a explorar temas aleatorios que despiertan tu interés.', 'information'),
-(3, 'Ver llorar a otras personas puede hacer que sientas ganas de llorar tú también.', 'outerlife'),
-(4, 'Sueles hacer un plan de reserva para un plan de reserva.', 'outerlife'),
-(5, 'Sueles mantener la calma, incluso bajo mucha presión.', 'focus'),
-(6, 'En los actos sociales, rara vez intentas presentarte a gente nueva y sueles hablar con los que ya conoces.', 'focus'),
-(7, 'Prefieres terminar por completo un proyecto antes de empezar otro.', 'outerlife'),
-(8, 'Controlas más tus emociones que ellas a ti.', 'decisions'),
-(9, 'Te gusta utilizar herramientas de organización como agendas y listas.', 'outerlife'),
-(10, 'Incluso un pequeño error puede hacerte dudar de tus capacidades y conocimientos generales.', 'decisions'),
-(11, 'Te sientes cómodo acercándote a alguien que te parece interesante y entablando una conversación.', 'focus'),
-(12, 'No te interesa demasiado discutir las diversas interpretaciones y análisis de las obras creativas.', 'information'),
-(13, 'Te gusta más seguir a tu cabeza que a tu corazón.', 'decisions'),
-(14, 'Sueles preferir hacer lo que te apetece en cada momento en lugar de planificar una rutina diaria concreta.', 'outerlife'),
-(15, 'Rara vez te preocupas por causar una buena impresión a las personas que conoces.', 'focus'),
-(16, 'Te gusta participar en actividades de grupo.', 'focus'),
-(17, 'Te gustan los libros y las películas que te hacen pensar en tu propia interpretación del final.', 'information'),
-(18, 'Tu felicidad proviene más de ayudar a los demás a conseguir cosas que de tus propios logros.', 'outerlife'),
-(19, 'Te interesan tantas cosas que te resulta difícil elegir qué probar a continuación.', 'information'),
-(20, 'Eres propenso a preocuparte de que las cosas empeoren.', 'decisions'),
-(21, 'Evitas el liderazgo en grupos.', 'focus'),
-(22, 'No eres una persona artística.', 'focus'),
-(23, 'Crees que el mundo sería mejor si la gente se basara más en la racionalidad y menos en sus sentimientos.', 'decisions'),
-(24, 'Prefieres hacer tus tareas antes de permitirte relajarte.', 'outerlife'),
-(25, 'Te gusta ver discutir a la gente.', 'outerlife'),
-(26, 'Tiendes a evitar llamar la atención.', 'focus'),
-(27, 'Tu humor puede cambiar muy rápidamente.', 'focus'),
-(28, 'Pierdes la paciencia con las personas que no son tan eficientes como tú.', 'decisions'),
-(29, 'A menudo acabas haciendo las cosas en el último momento.', 'outerlife'),
-(30, 'Siempre te ha fascinado la cuestión de qué ocurre después de la muerte, si es que ocurre algo.', 'outerlife'),
-(31, 'Sueles preferir estar rodeado de otros que solo.', 'focus'),
-(32, 'Te aburres o pierdes el interés cuando la discusión se vuelve muy teórica.', 'information'),
-(33, 'Te resulta fácil empatizar con una persona cuyas experiencias son muy diferentes de las tuyas.', 'focus'),
-(34, 'Sueles aplazar la toma de decisiones el mayor tiempo posible.', 'outerlife'),
-(35, 'Rara vez reconsideras las decisiones que has tomado.', 'decisions'),
-(36, 'Después de una semana larga y agotadora, un acto social animado es justo lo que necesitas.', 'focus'),
-(37, 'Te gusta ir a museos de arte.', 'information'),
-(38, 'Te cuesta comprender los sentimientos de los demás.', 'focus'),
-(39, 'Te gusta tener una lista de tareas para cada día.', 'outerlife'),
-(40, 'Rara vez te sientes inseguro.', 'focus'),
-(41, 'Evitas llamar por teléfono.', 'outerlife'),
-(42, 'Sueles pasar mucho tiempo intentando comprender puntos de vista muy diferentes a los tuyos.', 'information'),
-(43, 'En tu círculo social, sueles ser tú quien contacta con tus amigos e inicia las actividades.', 'focus'),
-(44, 'Si tus planes se ven interrumpidos, tu máxima prioridad es retomarlos lo antes posible.', 'outerlife'),
-(45, 'Todavía te molestan los errores que cometiste hace mucho tiempo.', 'decisions'),
-(46, 'Rara vez contemplas las razones de la existencia humana o el sentido de la vida.', 'outerlife'),
-(47, 'Controlas más tus emociones que ellas a ti.', 'decisions'),
-(48, 'Te cuidas mucho de no hacer quedar mal a la gente, incluso cuando es completamente culpa suya.', 'decisions'),
-(49, 'Tu estilo personal de trabajo se acerca más a las explosiones espontáneas de energía que a los esfuerzos organizados y constantes.', 'outerlife'),
-(50, 'Cuando alguien tiene una buena opinión de ti, te preguntas cuánto tardará en sentirse decepcionado contigo.', 'focus'),
-(51, 'Te encantaría un trabajo en el que tuvieras que trabajar en equipo la mayor parte del tiempo.', 'focus'),
-(52, 'Crees que reflexionar sobre cuestiones filosóficas abstractas es una pérdida de tiempo.', 'decisions'),
-(53, 'Te sientes más atraído por lugares con ambientes bulliciosos y ajetreados que por lugares tranquilos e íntimos.', 'focus'),
-(54, 'Sabes a primera vista cómo se siente una persona.', 'information'),
-(55, 'A menudo te sientes abrumado.', 'focus'),
-(56, 'Completas las cosas metódicamente sin saltarte ningún paso.', 'outerlife'),
-(57, 'Te intrigan mucho las cosas tachadas de controvertidas.', 'information'),
-(58, 'Dejarías pasar una buena oportunidad si pensaras que otra persona la necesita más.', 'outerlife'),
-(59, 'Te cuesta cumplir los plazos.', 'decisions'),
-(60, 'Confías en que las cosas te saldrán bien.', 'decisions');
+(1, 'Haces nuevos amigos con regularidad.', 'attitude'),
+(2, 'Dedicas gran parte de tu tiempo libre a explorar temas aleatorios que despiertan tu interés.', 'perception'),
+(3, 'Ver llorar a otras personas puede hacer que sientas ganas de llorar tú también.', 'behavior'),
+(4, 'Sueles hacer un plan de reserva para un plan de reserva.', 'behavior'),
+(5, 'Sueles mantener la calma, incluso bajo mucha presión.', 'attitude'),
+(6, 'En los actos sociales, rara vez intentas presentarte a gente nueva y sueles hablar con los que ya conoces.', 'attitude'),
+(7, 'Prefieres terminar por completo un proyecto antes de empezar otro.', 'behavior'),
+(8, 'Controlas más tus emociones que ellas a ti.', 'orientation'),
+(9, 'Te gusta utilizar herramientas de organización como agendas y listas.', 'behavior'),
+(10, 'Incluso un pequeño error puede hacerte dudar de tus capacidades y conocimientos generales.', 'orientation'),
+(11, 'Te sientes cómodo acercándote a alguien que te parece interesante y entablando una conversación.', 'attitude'),
+(12, 'No te interesa demasiado discutir las diversas interpretaciones y análisis de las obras creativas.', 'perception'),
+(13, 'Te gusta más seguir a tu cabeza que a tu corazón.', 'orientation'),
+(14, 'Sueles preferir hacer lo que te apetece en cada momento en lugar de planificar una rutina diaria concreta.', 'behavior'),
+(15, 'Rara vez te preocupas por causar una buena impresión a las personas que conoces.', 'attitude'),
+(16, 'Te gusta participar en actividades de grupo.', 'attitude'),
+(17, 'Te gustan los libros y las películas que te hacen pensar en tu propia interpretación del final.', 'perception'),
+(18, 'Tu felicidad proviene más de ayudar a los demás a conseguir cosas que de tus propios logros.', 'behavior'),
+(19, 'Te interesan tantas cosas que te resulta difícil elegir qué probar a continuación.', 'perception'),
+(20, 'Eres propenso a preocuparte de que las cosas empeoren.', 'orientation'),
+(21, 'Evitas el liderazgo en grupos.', 'attitude'),
+(22, 'No eres una persona artística.', 'attitude'),
+(23, 'Crees que el mundo sería mejor si la gente se basara más en la racionalidad y menos en sus sentimientos.', 'orientation'),
+(24, 'Prefieres hacer tus tareas antes de permitirte relajarte.', 'behavior'),
+(25, 'Te gusta ver discutir a la gente.', 'behavior'),
+(26, 'Tiendes a evitar llamar la atención.', 'attitude'),
+(27, 'Tu humor puede cambiar muy rápidamente.', 'attitude'),
+(28, 'Pierdes la paciencia con las personas que no son tan eficientes como tú.', 'orientation'),
+(29, 'A menudo acabas haciendo las cosas en el último momento.', 'behavior'),
+(30, 'Siempre te ha fascinado la cuestión de qué ocurre después de la muerte, si es que ocurre algo.', 'behavior'),
+(31, 'Sueles preferir estar rodeado de otros que solo.', 'attitude'),
+(32, 'Te aburres o pierdes el interés cuando la discusión se vuelve muy teórica.', 'perception'),
+(33, 'Te resulta fácil empatizar con una persona cuyas experiencias son muy diferentes de las tuyas.', 'attitude'),
+(34, 'Sueles aplazar la toma de decisiones el mayor tiempo posible.', 'behavior'),
+(35, 'Rara vez reconsideras las decisiones que has tomado.', 'orientation'),
+(36, 'Después de una semana larga y agotadora, un acto social animado es justo lo que necesitas.', 'attitude'),
+(37, 'Te gusta ir a museos de arte.', 'perception'),
+(38, 'Te cuesta comprender los sentimientos de los demás.', 'attitude'),
+(39, 'Te gusta tener una lista de tareas para cada día.', 'behavior'),
+(40, 'Rara vez te sientes inseguro.', 'attitude'),
+(41, 'Evitas llamar por teléfono.', 'behavior'),
+(42, 'Sueles pasar mucho tiempo intentando comprender puntos de vista muy diferentes a los tuyos.', 'perception'),
+(43, 'En tu círculo social, sueles ser tú quien contacta con tus amigos e inicia las actividades.', 'attitude'),
+(44, 'Si tus planes se ven interrumpidos, tu máxima prioridad es retomarlos lo antes posible.', 'behavior'),
+(45, 'Todavía te molestan los errores que cometiste hace mucho tiempo.', 'orientation'),
+(46, 'Rara vez contemplas las razones de la existencia humana o el sentido de la vida.', 'behavior'),
+(47, 'Controlas más tus emociones que ellas a ti.', 'orientation'),
+(48, 'Te cuidas mucho de no hacer quedar mal a la gente, incluso cuando es completamente culpa suya.', 'orientation'),
+(49, 'Tu estilo personal de trabajo se acerca más a las explosiones espontáneas de energía que a los esfuerzos organizados y constantes.', 'behavior'),
+(50, 'Cuando alguien tiene una buena opinión de ti, te preguntas cuánto tardará en sentirse decepcionado contigo.', 'attitude'),
+(51, 'Te encantaría un trabajo en el que tuvieras que trabajar en equipo la mayor parte del tiempo.', 'attitude'),
+(52, 'Crees que reflexionar sobre cuestiones filosóficas abstractas es una pérdida de tiempo.', 'orientation'),
+(53, 'Te sientes más atraído por lugares con ambientes bulliciosos y ajetreados que por lugares tranquilos e íntimos.', 'attitude'),
+(54, 'Sabes a primera vista cómo se siente una persona.', 'perception'),
+(55, 'A menudo te sientes abrumado.', 'attitude'),
+(56, 'Completas las cosas metódicamente sin saltarte ningún paso.', 'behavior'),
+(57, 'Te intrigan mucho las cosas tachadas de controvertidas.', 'perception'),
+(58, 'Dejarías pasar una buena oportunidad si pensaras que otra persona la necesita más.', 'behavior'),
+(59, 'Te cuesta cumplir los plazos.', 'orientation'),
+(60, 'Confías en que las cosas te saldrán bien.', 'orientation');
 
 -- --------------------------------------------------------
 
@@ -230,21 +230,20 @@ CREATE TABLE `usuarios` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `username` varchar(255) NOT NULL,
   `mbti` varchar(4) NOT NULL,
-  `focus` int(11) NOT NULL,
-  `information` int(11) NOT NULL,
-  `decisions` int(11) NOT NULL,
-  `outerlife` int(11) NOT NULL
+  `attitude` int(11) NOT NULL,
+  `perception` int(11) NOT NULL,
+  `orientation` int(11) NOT NULL,
+  `behavior` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `username`, `mbti`, `focus`, `information`, `decisions`, `outerlife`) VALUES
-(1, 'Michillas', 'INTP', -1, 0, 0, 0),
-(2, 'jj', 'ESFP', 43, 12, 20, 18),
-(3, 'test', 'ENTP', 0, 0, 0, 0),
-(4, 'Vitaliy', 'ENTP', 4, 7, 9, 18);
+INSERT INTO `usuarios` (`id`, `username`, `mbti`, `attitude`, `perception`, `orientation`, `behavior`) VALUES
+(2, 'Michillas', 'INTP', 0, 6, 8, 22),
+(3, 'gg', 'ESTJ', 2, 1, 0, -3),
+(4, 'Vitaliy', 'ISTP', -8, 0, 10, 29);
 
 --
 -- Índices para tablas volcadas

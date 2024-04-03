@@ -28,10 +28,10 @@ public class UsuarioService {
                         resultSet.getInt("id"),
                         resultSet.getString("username"),
                         resultSet.getString("mbti"),
-                        resultSet.getInt("focus"),
-                        resultSet.getInt("information"),
-                        resultSet.getInt("decisions"),
-                        resultSet.getInt("outerlife")
+                        resultSet.getInt("attitude"),
+                        resultSet.getInt("perception"),
+                        resultSet.getInt("orientation"),
+                        resultSet.getInt("behavior")
                 );
                 usuarios.add(usuario);
             }
@@ -50,10 +50,10 @@ public class UsuarioService {
                             resultSet.getInt("id"),
                             resultSet.getString("username"),
                             resultSet.getString("mbti"),
-                            resultSet.getInt("focus"),
-                            resultSet.getInt("information"),
-                            resultSet.getInt("decisions"),
-                            resultSet.getInt("outerlife")
+                            resultSet.getInt("attitude"),
+                            resultSet.getInt("perception"),
+                            resultSet.getInt("orientation"),
+                            resultSet.getInt("behavior")
                     );
                 }
             }
@@ -62,29 +62,29 @@ public class UsuarioService {
     }
 
     public void createUsuario(Usuario usuario) throws SQLException {
-        String sql = "INSERT INTO usuarios (username, mbti, focus, information, decisions, outerlife) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO usuarios (username, mbti, attitude, perception, orientation, behavior) VALUES (?, ?, ?, ?, ?, ?)";
         try (Connection connection = mysql.connect();
              PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, usuario.getUsername());
             statement.setString(2, usuario.getMbti());
-            statement.setInt(3, usuario.getFocus());
-            statement.setInt(4, usuario.getInformation());
-            statement.setInt(5, usuario.getDecisions());
-            statement.setInt(6, usuario.getOuterlife());
+            statement.setInt(3, usuario.getAttitude());
+            statement.setInt(4, usuario.getPerception());
+            statement.setInt(5, usuario.getOrientation());
+            statement.setInt(6, usuario.getBehavior());
             statement.executeUpdate();
         }
     }
 
     public void updateUsuario(Usuario usuario) throws SQLException {
-        String sql = "UPDATE usuarios SET username = ?, mbti = ?, focus = ?, information = ?, decisions = ?, outerlife = ? WHERE id = ?";
+        String sql = "UPDATE usuarios SET username = ?, mbti = ?, attitude = ?, perception = ?, orientation = ?, behavior = ? WHERE id = ?";
         try (Connection connection = mysql.connect();
              PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, usuario.getUsername());
             statement.setString(2, usuario.getMbti());
-            statement.setInt(3, usuario.getFocus());
-            statement.setInt(4, usuario.getInformation());
-            statement.setInt(5, usuario.getDecisions());
-            statement.setInt(6, usuario.getOuterlife());
+            statement.setInt(3, usuario.getAttitude());
+            statement.setInt(4, usuario.getPerception());
+            statement.setInt(5, usuario.getOrientation());
+            statement.setInt(6, usuario.getBehavior());
             statement.setInt(7, usuario.getId());
             statement.executeUpdate();
         }
