@@ -79,7 +79,7 @@ export default function Header() {
       {isLoggedIn &&
       <NavbarContent justify="end">
           <NavbarItem>
-            <Button color="primary" variant="flat" onPress={() => logout} >
+            <Button color="primary" variant="flat" onPress={() => logout()} >
               Cerrar sesión
             </Button>
           </NavbarItem>
