@@ -63,11 +63,11 @@ public class PreguntasService {
         }
     }
 
-    public void deleteQuestion(String question) throws SQLException {
-        String sql = "DELETE FROM preguntas WHERE question = ?";
+    public void deleteQuestion(int id) throws SQLException {
+        String sql = "DELETE FROM preguntas WHERE id = ?";
         try (Connection connection = mysql.connect();
              PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setString(1, question);
+            statement.setInt(1, id);
             statement.executeUpdate();
         }
     }

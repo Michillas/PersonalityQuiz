@@ -56,12 +56,7 @@ public class PreguntasController {
     }
 
     @DeleteMapping("/delete")
-    public void deletePregunta(@RequestParam String question) {
-        try {
-            preguntasService.deleteQuestion(question);
-        } catch (SQLException e) {
-            // Handle SQL Exception
-            e.printStackTrace();
-        }
+    public void deletePregunta(@PathVariable("id") int id) throws SQLException  {
+        preguntasService.deleteQuestion(id);
     }
 }

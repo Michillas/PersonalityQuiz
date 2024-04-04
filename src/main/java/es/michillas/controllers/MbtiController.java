@@ -56,12 +56,7 @@ public class MbtiController {
     }
 
     @DeleteMapping("/delete")
-    public void deleteMbti(@RequestParam String mbti) {
-        try {
-            mbtiService.deleteMbti(mbti);
-        } catch (SQLException e) {
-            // Handle SQL Exception
-            e.printStackTrace();
-        }
+    public void deleteMbti(@PathVariable("mbti") String mbti) throws SQLException  {
+        mbtiService.deleteMbti(mbti);
     }
 }

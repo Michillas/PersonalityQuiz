@@ -93,12 +93,7 @@ public class AdminController {
     }
 
     @DeleteMapping("/delete")
-    public void deleteAdmin(@RequestParam String admin) {
-        try {
-            adminService.deleteAdmin(admin);
-        } catch (SQLException e) {
-            // Handle SQL Exception
-            e.printStackTrace();
-        }
+    public void deleteAdmin(@PathVariable("admin") String admin) throws SQLException  {
+        adminService.deleteAdmin(admin);
     }
 }

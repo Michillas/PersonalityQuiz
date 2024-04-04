@@ -55,12 +55,7 @@ public class CharacterController {
     }
 
     @DeleteMapping("/delete")
-    public void deleteCharacter(@RequestParam String character) {
-        try {
-            characterService.deleteCharacter(character);
-        } catch (SQLException e) {
-            // Handle SQL Exception
-            e.printStackTrace();
-        }
+    public void deleteCharacter(@PathVariable("character") String character) throws SQLException  {
+        characterService.deleteCharacter(character);
     }
 }
