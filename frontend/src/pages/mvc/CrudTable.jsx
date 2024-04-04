@@ -16,46 +16,75 @@ import {
   DropdownMenu,
   DropdownItem,
   User,
-  Pagination
+  Pagination,
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  useDisclosure
 } from "@nextui-org/react";
-import {PlusIcon} from "./icons/PlusIcon";
-import {EditIcon} from "./icons/EditIcon";
-import {DeleteIcon} from "./icons/DeleteIcon";
-import {EyeIcon} from "./icons/EyeIcon";
-import {SearchIcon} from "./icons/SearchIcon";
-import {ChevronDownIcon} from "./icons/ChevronDownIcon";
+import { PlusIcon } from "./icons/PlusIcon";
+import { EditIcon } from "./icons/EditIcon";
+import { DeleteIcon } from "./icons/DeleteIcon";
+import { EyeIcon } from "./icons/EyeIcon";
+import { SearchIcon } from "./icons/SearchIcon";
+import { ChevronDownIcon } from "./icons/ChevronDownIcon";
 
 const INITIAL_VISIBLE_COLUMNS = ["id", "name", "mbti", "actions"];
 
 export default function CrudTable() {
-
   const serverIP = process.env.REACT_APP_SERVERIP;
 
   const [users, setUsers] = React.useState([]);
 
+  const [currentUser, setCurrentUser] = React.useState();
+
   React.useEffect(() => {
-      fetchUsers();
+    fetchUsers();
   }, []);
 
   const fetchUsers = async () => {
-      try {
-          const response = await fetch(`${serverIP}/usuarios/list`);
-          const data = await response.json();
-          setUsers(data);
-      } catch (error) {
-          console.error('Error fetching questions:', error);
-      }
+    try {
+      const response = await fetch(`${serverIP}/usuarios/list`);
+      const data = await response.json();
+      setUsers(data);
+    } catch (error) {
+      console.error("Error fetching users:", error);
+    }
   };
 
+  /*
+  function handleModalView(user) {
+    setCurrentUser(user);
+    onViewOpen();
+  }*/
+
+  const { isOpen: isEditOpen, onOpen: onEditOpen, onOpenChange: onEditOpenChange} = useDisclosure();
+
+  function handleModalEdit(user) {
+    setCurrentUser(user);
+    onEditOpen();
+  }
+
+  const { isOpen: isDeleteOpen, onOpen: onDeleteOpen, onOpenChange: onDeleteOpenChange} = useDisclosure();
+
+  function handleModalDelete(user) {
+    setCurrentUser(user);
+    onDeleteOpen();
+  }
+
   const columns = [
-    {name: "ID", uid: "id", sortable: true},
-    {name: "NOMBRE", uid: "name", sortable: true},
-    {name: "MBTI", uid: "mbti", sortable: true},
-    {name: "ACCIONES", uid: "actions"},
+    { name: "ID", uid: "id", sortable: true },
+    { name: "NOMBRE", uid: "name", sortable: true },
+    { name: "MBTI", uid: "mbti", sortable: true },
+    { name: "ACCIONES", uid: "actions" },
   ];
 
   const [filterValue, setFilterValue] = React.useState("");
-  const [visibleColumns, setVisibleColumns] = React.useState(new Set(INITIAL_VISIBLE_COLUMNS));
+  const [visibleColumns, setVisibleColumns] = React.useState(
+    new Set(INITIAL_VISIBLE_COLUMNS)
+  );
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
   const [sortDescriptor, setSortDescriptor] = React.useState({
     column: "age",
@@ -68,7 +97,9 @@ export default function CrudTable() {
   const headerColumns = React.useMemo(() => {
     if (visibleColumns === "all") return columns;
 
-    return columns.filter((column) => Array.from(visibleColumns).includes(column.uid));
+    return columns.filter((column) =>
+      Array.from(visibleColumns).includes(column.uid)
+    );
   }, [visibleColumns]);
 
   const filteredItems = React.useMemo(() => {
@@ -76,7 +107,7 @@ export default function CrudTable() {
 
     if (hasSearchFilter) {
       filteredUsers = filteredUsers.filter((user) =>
-        user.username.toLowerCase().includes(filterValue.toLowerCase()),
+        user.username.toLowerCase().includes(filterValue.toLowerCase())
       );
     }
 
@@ -109,29 +140,38 @@ export default function CrudTable() {
       case "name":
         return (
           <User
-            avatarProps={{radius: "lg", src: user.avatar}}
+            avatarProps={{ radius: "lg", src: user.avatar }}
             name={user.username}
-          >
-          </User>
+          ></User>
         );
       case "role":
         return (
           <div className="flex flex-col">
             <p className="text-bold text-small capitalize">{cellValue}</p>
-            <p className="text-bold text-tiny capitalize text-default-400">{user.team}</p>
+            <p className="text-bold text-tiny capitalize text-default-400">
+              {user.team}
+            </p>
           </div>
         );
       case "actions":
         return (
           <div className="relative flex items-center gap-2">
-            <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
+            <span
+              className="text-lg text-default-400 cursor-pointer active:opacity-50"
+              onClick={() => handleModalView(user)}
+            >
               <EyeIcon />
             </span>
-            <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
+            <span
+              className="text-lg text-default-400 cursor-pointer active:opacity-50"
+              onClick={() => handleModalEdit(user)}
+            >
               <EditIcon />
             </span>
-            <span className="text-lg text-danger cursor-pointer active:opacity-50">
-              <DeleteIcon />
+            <span
+              className="text-lg text-danger cursor-pointer active:opacity-50"
+            >
+              <DeleteIcon onClick={() => handleModalDelete(user)} />
             </span>
           </div>
         );
@@ -166,14 +206,14 @@ export default function CrudTable() {
     }
   }, []);
 
-  const onClear = React.useCallback(()=>{
-    setFilterValue("")
-    setPage(1)
-  },[])
+  const onClear = React.useCallback(() => {
+    setFilterValue("");
+    setPage(1);
+  }, []);
 
   function capitalize(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
-  }  
+  }
 
   const topContent = React.useMemo(() => {
     return (
@@ -191,7 +231,10 @@ export default function CrudTable() {
           <div className="flex gap-3">
             <Dropdown>
               <DropdownTrigger className="hidden sm:flex">
-                <Button endContent={<ChevronDownIcon className="text-small" />} variant="flat">
+                <Button
+                  endContent={<ChevronDownIcon className="text-small" />}
+                  variant="flat"
+                >
                   Columnas
                 </Button>
               </DropdownTrigger>
@@ -216,7 +259,9 @@ export default function CrudTable() {
           </div>
         </div>
         <div className="flex justify-between items-center">
-          <span className="text-default-400 text-small">Total: {users.length} usuarios</span>
+          <span className="text-default-400 text-small">
+            Total: {users.length} usuarios
+          </span>
           <label className="flex items-center text-default-400 text-small">
             Filas por pagina:
             <select
@@ -253,10 +298,20 @@ export default function CrudTable() {
           onChange={setPage}
         />
         <div className="hidden sm:flex w-[30%] justify-end gap-2">
-          <Button isDisabled={pages === 1} size="sm" variant="flat" onPress={onPreviousPage}>
+          <Button
+            isDisabled={pages === 1}
+            size="sm"
+            variant="flat"
+            onPress={onPreviousPage}
+          >
             Anterior
           </Button>
-          <Button isDisabled={pages === 1} size="sm" variant="flat" onPress={onNextPage}>
+          <Button
+            isDisabled={pages === 1}
+            size="sm"
+            variant="flat"
+            onPress={onNextPage}
+          >
             Siguiente
           </Button>
         </div>
@@ -265,37 +320,93 @@ export default function CrudTable() {
   }, [items.length, page, pages, hasSearchFilter]);
 
   return (
-    <Table
-      aria-label="Example table with custom cells, pagination and sorting"
-      isHeaderSticky
-      bottomContent={bottomContent}
-      bottomContentPlacement="outside"
-      classNames={{
-        wrapper: "max-h-[382px]",
-      }}
-      sortDescriptor={sortDescriptor}
-      topContent={topContent}
-      topContentPlacement="outside"
-      onSortChange={setSortDescriptor}
-    >
-      <TableHeader columns={headerColumns}>
-        {(column) => (
-          <TableColumn
-            key={column.uid}
-            align={column.uid === "actions" ? "center" : "start"}
-            allowsSorting={column.sortable}
-          >
-            {column.name}
-          </TableColumn>
-        )}
-      </TableHeader>
-      <TableBody emptyContent={"No hay usuarios"} items={sortedItems}>
-        {(item) => (
-          <TableRow key={item.id}>
-            {(columnKey) => <TableCell>{renderCell(item, columnKey)}</TableCell>}
-          </TableRow>
-        )}
-      </TableBody>
-    </Table>
+    <>
+      <Modal isOpen={isDeleteOpen} onOpenChange={onDeleteOpenChange} className="dark text-foreground">
+        <ModalContent>
+          {(onClose) => (
+            <>
+              <ModalHeader className="flex flex-col gap-1">Borrar registro</ModalHeader>
+              <ModalBody>
+                <p> 
+                  Borrarás al usuario {currentUser.username}, ¿estas seguro?
+                </p>
+              </ModalBody>
+              <ModalFooter>
+                <Button color="danger" variant="light" onPress={onClose}>
+                  Cancelar
+                </Button>
+                <Button color="danger" onPress={onClose}>
+                  Aceptar
+                </Button>
+              </ModalFooter>
+            </>
+          )}
+        </ModalContent>
+      </Modal>
+      <Modal isOpen={isEditOpen} onOpenChange={onEditOpenChange} className="dark text-foreground">
+      <ModalContent>
+          {(onClose) => (
+            <>
+              <ModalHeader className="flex flex-col gap-1">Modificar</ModalHeader>
+              <ModalBody>
+                <Input
+                  autoFocus
+                  label="Nombre"
+                  placeholder={currentUser.username}
+                  variant="bordered"
+                />
+                <Input
+                  label="MBTI"
+                  placeholder={currentUser.mbti}
+                  variant="bordered"
+                />
+              </ModalBody>
+              <ModalFooter>
+                <Button color="danger" variant="flat" onPress={onClose}>
+                  Cancelar
+                </Button>
+                <Button color="primary" onPress={onClose}>
+                  Guardar
+                </Button>
+              </ModalFooter>
+            </>
+          )}
+        </ModalContent>
+      </Modal>
+      <Table
+        aria-label="Example table with custom cells, pagination and sorting"
+        isHeaderSticky
+        bottomContent={bottomContent}
+        bottomContentPlacement="outside"
+        classNames={{
+          wrapper: "max-h-[382px]",
+        }}
+        sortDescriptor={sortDescriptor}
+        topContent={topContent}
+        topContentPlacement="outside"
+        onSortChange={setSortDescriptor}
+      >
+        <TableHeader columns={headerColumns}>
+          {(column) => (
+            <TableColumn
+              key={column.uid}
+              align={column.uid === "actions" ? "center" : "start"}
+              allowsSorting={column.sortable}
+            >
+              {column.name}
+            </TableColumn>
+          )}
+        </TableHeader>
+        <TableBody emptyContent={"No hay usuarios"} items={sortedItems}>
+          {(item) => (
+            <TableRow key={item.id}>
+              {(columnKey) => (
+                <TableCell>{renderCell(item, columnKey)}</TableCell>
+              )}
+            </TableRow>
+          )}
+        </TableBody>
+      </Table>
+    </>
   );
 }
