@@ -40,6 +40,9 @@ export default function CrudTable() {
 
   const [currentUser, setCurrentUser] = React.useState();
 
+  const [currentUserName, setCurrentUserName] = React.useState('');
+  const [currentUserMBTI, setCurrentUserMBTI] = React.useState('');
+
   React.useEffect(() => {
     fetchUsers();
   }, []);
@@ -96,7 +99,35 @@ export default function CrudTable() {
     }
   }
   
-  
+  const createUser = async (username, mbti) => {
+    try {
+      const usuarioData = {
+          username: username,
+          mbti: mbti,
+          attitude: 0,
+          perception: 0,
+          orientation: 0,
+          behavior: 0
+      };
+
+      const response = await fetch(`${serverIP}/usuarios/create`, {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(usuarioData)
+      });
+
+      if (response.ok) {
+          console.log('User created');
+          window.location.reload();
+      } else {
+          console.error('Failed to save user');
+      }
+    } catch (error) {
+        console.error('Error creating user:', error);
+    }
+  }
 
   const columns = [
     { name: "ID", uid: "id", sortable: true },
@@ -358,18 +389,22 @@ export default function CrudTable() {
                   label="Nombre"
                   placeholder="Persona"
                   variant="bordered"
+                  value={currentUserName}
+                  onValueChange={setCurrentUserName}
                 />
                 <Input
                   label="MBTI"
                   placeholder="ESFP"
                   variant="bordered"
+                  value={currentUserMBTI}
+                  onValueChange={setCurrentUserMBTI}
                 />
               </ModalBody>
               <ModalFooter>
                 <Button color="danger" variant="flat" onPress={onClose}>
                   Cancelar
                 </Button>
-                <Button color="primary" onPress={onClose}>
+                <Button color="primary" onPress={() => createUser(currentUserName, currentUserMBTI)}>
                   Crear
                 </Button>
               </ModalFooter>
