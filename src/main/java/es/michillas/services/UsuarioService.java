@@ -75,7 +75,7 @@ public class UsuarioService {
         }
     }
 
-    public void updateUsuario(Usuario usuario) throws SQLException {
+    public void updateUsuario(int id, Usuario usuario) throws SQLException {
         String sql = "UPDATE usuarios SET username = ?, mbti = ?, attitude = ?, perception = ?, orientation = ?, behavior = ? WHERE id = ?";
         try (Connection connection = mysql.connect();
              PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -85,7 +85,7 @@ public class UsuarioService {
             statement.setInt(4, usuario.getPerception());
             statement.setInt(5, usuario.getOrientation());
             statement.setInt(6, usuario.getBehavior());
-            statement.setInt(7, usuario.getId());
+            statement.setInt(7, id);
             statement.executeUpdate();
         }
     }

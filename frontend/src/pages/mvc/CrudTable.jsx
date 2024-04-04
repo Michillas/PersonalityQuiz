@@ -99,6 +99,34 @@ export default function CrudTable() {
     }
   }
   
+  const editUser = async (username, mbti) => {
+    try {
+      const usuarioData = {
+        username: username,
+        mbti: mbti,
+        attitude: currentUser.attitude,
+        perception: currentUser.perception,
+        orientation: currentUser.orientation,
+        behavior: currentUser.behavior
+      };
+
+      const response = await fetch(`${serverIP}/usuarios/update/` + currentUser.id, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(usuarioData)
+      });
+      
+      if (response.status === 200) {
+        console.log("Updated")
+        window.location.reload();
+      } 
+    } catch (error) {
+      console.error("Error deleting user:", error);
+    }
+  }
+
   const createUser = async (username, mbti) => {
     try {
       const usuarioData = {
@@ -445,18 +473,22 @@ export default function CrudTable() {
                   label="Nombre"
                   placeholder={currentUser.username}
                   variant="bordered"
+                  value={currentUserName}
+                  onValueChange={setCurrentUserName}
                 />
                 <Input
                   label="MBTI"
                   placeholder={currentUser.mbti}
                   variant="bordered"
+                  value={currentUserMBTI}
+                  onValueChange={setCurrentUserMBTI}
                 />
               </ModalBody>
               <ModalFooter>
                 <Button color="danger" variant="flat" onPress={onClose}>
                   Cancelar
                 </Button>
-                <Button color="primary" onPress={onClose}>
+                <Button color="primary" onPress={() => editUser(currentUserName, currentUserMBTI)}>
                   Guardar
                 </Button>
               </ModalFooter>
