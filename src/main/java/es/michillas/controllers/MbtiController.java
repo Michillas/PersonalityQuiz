@@ -55,7 +55,7 @@ public class MbtiController {
         }
     }
 
-    @PostMapping("/delete")
+    @DeleteMapping("/delete")
     public void deleteMbti(@RequestParam String mbti) {
         try {
             mbtiService.deleteMbti(mbti);

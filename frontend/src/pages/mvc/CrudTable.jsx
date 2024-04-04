@@ -27,7 +27,7 @@ import {
 import { PlusIcon } from "./icons/PlusIcon";
 import { EditIcon } from "./icons/EditIcon";
 import { DeleteIcon } from "./icons/DeleteIcon";
-import { EyeIcon } from "./icons/EyeIcon";
+/*import { EyeIcon } from "./icons/EyeIcon";*/
 import { SearchIcon } from "./icons/SearchIcon";
 import { ChevronDownIcon } from "./icons/ChevronDownIcon";
 
@@ -54,7 +54,11 @@ export default function CrudTable() {
     }
   };
 
+  const { isOpen: isAddOpen, onOpen: onAddOpen, onOpenChange: onAddOpenChange} = useDisclosure();
+
   /*
+  const { isOpen: isViewOpen, onOpen: onViewOpen, onOpenChange: onViewOpenChange} = useDisclosure();
+  
   function handleModalView(user) {
     setCurrentUser(user);
     onViewOpen();
@@ -73,6 +77,26 @@ export default function CrudTable() {
     setCurrentUser(user);
     onDeleteOpen();
   }
+
+  const deleteUser = async () => {
+    try {
+      const response = await fetch(`${serverIP}/usuarios/delete/` + currentUser.id, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      
+      if (response.status === 200) {
+        console.log("Deleted")
+        window.location.reload();
+      } 
+    } catch (error) {
+      console.error("Error deleting user:", error);
+    }
+  }
+  
+  
 
   const columns = [
     { name: "ID", uid: "id", sortable: true },
@@ -156,12 +180,14 @@ export default function CrudTable() {
       case "actions":
         return (
           <div className="relative flex items-center gap-2">
+            {/*
             <span
               className="text-lg text-default-400 cursor-pointer active:opacity-50"
               onClick={() => handleModalView(user)}
             >
               <EyeIcon />
             </span>
+            */}
             <span
               className="text-lg text-default-400 cursor-pointer active:opacity-50"
               onClick={() => handleModalEdit(user)}
@@ -253,7 +279,7 @@ export default function CrudTable() {
                 ))}
               </DropdownMenu>
             </Dropdown>
-            <Button color="primary" endContent={<PlusIcon />}>
+            <Button color="primary" endContent={<PlusIcon />} onPress={onAddOpen} >
               Crear Nuevo
             </Button>
           </div>
@@ -321,6 +347,36 @@ export default function CrudTable() {
 
   return (
     <>
+      <Modal isOpen={isAddOpen} onOpenChange={onAddOpenChange} className="dark text-foreground">
+        <ModalContent>
+          {(onClose) => (
+            <>
+              <ModalHeader className="flex flex-col gap-1">Agregar nuevo</ModalHeader>
+              <ModalBody>
+                <Input
+                  autoFocus
+                  label="Nombre"
+                  placeholder="Persona"
+                  variant="bordered"
+                />
+                <Input
+                  label="MBTI"
+                  placeholder="ESFP"
+                  variant="bordered"
+                />
+              </ModalBody>
+              <ModalFooter>
+                <Button color="danger" variant="flat" onPress={onClose}>
+                  Cancelar
+                </Button>
+                <Button color="primary" onPress={onClose}>
+                  Crear
+                </Button>
+              </ModalFooter>
+            </>
+          )}
+        </ModalContent>
+      </Modal>
       <Modal isOpen={isDeleteOpen} onOpenChange={onDeleteOpenChange} className="dark text-foreground">
         <ModalContent>
           {(onClose) => (
@@ -335,7 +391,7 @@ export default function CrudTable() {
                 <Button color="danger" variant="light" onPress={onClose}>
                   Cancelar
                 </Button>
-                <Button color="danger" onPress={onClose}>
+                <Button color="danger" onPress={() => deleteUser()}>
                   Aceptar
                 </Button>
               </ModalFooter>
@@ -344,7 +400,7 @@ export default function CrudTable() {
         </ModalContent>
       </Modal>
       <Modal isOpen={isEditOpen} onOpenChange={onEditOpenChange} className="dark text-foreground">
-      <ModalContent>
+        <ModalContent>
           {(onClose) => (
             <>
               <ModalHeader className="flex flex-col gap-1">Modificar</ModalHeader>

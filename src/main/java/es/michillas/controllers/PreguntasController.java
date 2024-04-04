@@ -55,7 +55,7 @@ public class PreguntasController {
         }
     }
 
-    @PostMapping("/delete")
+    @DeleteMapping("/delete")
     public void deletePregunta(@RequestParam String question) {
         try {
             preguntasService.deleteQuestion(question);

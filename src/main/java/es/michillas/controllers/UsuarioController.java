@@ -52,8 +52,8 @@ public class UsuarioController {
         usuarioService.updateUsuario(usuario);
     }
 
-    @PostMapping("/delete/{id}")
-    public void deleteUsuario(@PathVariable int id) throws SQLException {
+    @DeleteMapping("/delete/{id}")
+    public void deleteUsuario(@PathVariable("id") int id) throws SQLException {
         usuarioService.deleteUsuario(id);
     }
 }

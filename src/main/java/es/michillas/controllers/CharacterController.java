@@ -54,7 +54,7 @@ public class CharacterController {
         }
     }
 
-    @PostMapping("/delete")
+    @DeleteMapping("/delete")
     public void deleteCharacter(@RequestParam String character) {
         try {
             characterService.deleteCharacter(character);

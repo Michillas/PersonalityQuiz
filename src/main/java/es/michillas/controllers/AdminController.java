@@ -92,7 +92,7 @@ public class AdminController {
         }
     }
 
-    @PostMapping("/delete")
+    @DeleteMapping("/delete")
     public void deleteAdmin(@RequestParam String admin) {
         try {
             adminService.deleteAdmin(admin);
