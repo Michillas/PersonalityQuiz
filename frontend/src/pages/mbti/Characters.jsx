@@ -22,14 +22,13 @@ export default function Characters(props) {
             setCharacters(data);
         } catch (error) {
             console.error('Error fetching characters:', error);
-
             setCharacters([]);
         }
     };
 
     return (
         <div className="gap-2 grid grid-cols-2 sm:grid-cols-3">
-            {characters.map((item, index) => (
+            {Array.isArray(characters) && characters.map((item, index) => (
                 item.mbti === props.mbtiType && (
                     <Card shadow="sm" key={index} isPressable onPress={() => console.log("item pressed")}>
                         <CardBody className="overflow-visible p-0">
@@ -50,5 +49,5 @@ export default function Characters(props) {
                 )
             ))}
         </div>
-    );
+    );    
 }

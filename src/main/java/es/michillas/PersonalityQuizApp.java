@@ -2,7 +2,7 @@ package es.michillas;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
 @SpringBootApplication
 public class PersonalityQuizApp {
@@ -10,8 +10,12 @@ public class PersonalityQuizApp {
         SpringApplication.run(PersonalityQuizApp.class, args);
     }
 
-    @GetMapping("/error")
-    public String handleError() {
-        return "Error";
+    @RestController
+    @RequestMapping("/")
+    static class Controller {
+        @GetMapping("/error")
+        String handleError() {
+            return "Error";
+        }
     }
 }
