@@ -1,10 +1,10 @@
 version: '3.8'
 
 services:
-  mysql:
+  localhost:
     image: mysql:8.0  # Specify a specific version of MySQL
     ports:
-      - "3307:3306"
+      - "3306:3306"
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     volumes:
