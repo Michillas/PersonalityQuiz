@@ -23,6 +23,9 @@ SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
+CREATE DATABASE IF NOT EXISTS personalityquiz;
+USE personalityquiz;
+
 --
 -- Estructura de tabla para la tabla `admin`
 --
