@@ -22,6 +22,8 @@ export default function Characters(props) {
             setCharacters(data);
         } catch (error) {
             console.error('Error fetching characters:', error);
+
+            setCharacters([]);
         }
     };
 
