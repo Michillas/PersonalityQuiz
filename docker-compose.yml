@@ -25,7 +25,6 @@ services:
       - springapimysql-net  
     environment:
       MYSQL_DATABASE: personalityquiz
-      MYSQL_USER: root
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
 networks:
   springapimysql-net:
