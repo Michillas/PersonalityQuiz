@@ -15,6 +15,7 @@ public class DatabaseConnection {
     Connection connection;
 
     public Connection connect(){
+        System.out.println(url);
         try {
             connection = DriverManager.getConnection(url, user, pass);
         } catch (SQLException e) {
@@ -28,12 +29,12 @@ public class DatabaseConnection {
             String line;
             while ((line = br.readLine()) != null) {
                 if (line.startsWith("DB_PASSWORD")) {
-                    return line.split("=")[1];
+                    return line.split("=")[1].trim().replaceAll("^\"|\"$", "");
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null; // Handle if DB_PASSWORD is not found
+        return null;
     }
 }
