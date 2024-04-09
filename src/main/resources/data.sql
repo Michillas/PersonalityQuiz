@@ -1,5 +1,3 @@
-USE personalityquiz;
-
 INSERT INTO `admin` (`id`, `name`, `password`) VALUES
 (1, 'test', '$2a$10$bPVucNQCOL0OkGI/sk3wLOSdDiigecHXtcrYnwGvDQ0ouiF9LMgD2');
 

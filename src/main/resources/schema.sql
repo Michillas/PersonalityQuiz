@@ -1,6 +1,3 @@
-CREATE DATABASE IF NOT EXISTS personalityquiz;
-USE personalityquiz;
-
 CREATE TABLE `admin` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
