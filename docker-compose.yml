@@ -1,25 +1,31 @@
 version: '3.8'
 
 services:
-  localhost:
-    image: mysql:8.0  # Specify a specific version of MySQL
-    ports:
-      - "3306:3306"
-    environment:
-      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-    volumes:
-      - ./personalityquiz.sql:/docker-entrypoint-initdb.d/personalityquiz.sql
-    networks:
-      - personalityquiz-net
-
-  backend:
+  api_service:
     build: .
+    restart: always
     ports:
-      - "8080:8080"
-    depends_on:
-      - localhost
+      - 8080:8080
     networks:
-      - personalityquiz-net
-
+      - springapimysql-net
+    environment:
+      - spring.datasource.url=jdbc:mysql://mysqldb:3306/personalityquiz?allowPublicKeyRetrieval=true    
+    depends_on:
+      - mysqldb
+    
+    volumes:
+      - .m2:/root/.m2
+      
+  mysqldb:
+    image: "mysql:8.0"
+    restart: always
+    ports:
+      - 3306:3306
+    networks:
+      - springapimysql-net  
+    environment:
+      MYSQL_DATABASE: personalityquiz
+      MYSQL_USER: root
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
 networks:
-  personalityquiz-net:
+  springapimysql-net:

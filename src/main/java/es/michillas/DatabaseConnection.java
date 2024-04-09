@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DatabaseConnection {
-    String url = "jdbc:mysql://localhost:3306/personalityquiz";
+    String url = "jdbc:mysql://localhost:3306/personalityquiz?allowPublicKeyRetrieval=true";
     String user = "root";
     String pass = "";
 

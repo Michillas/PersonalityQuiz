@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 public class CharacterService {
 
     DatabaseConnection mysql = new DatabaseConnection();
+
     public List<Character> getAllCharacters() throws SQLException {
         List<Character> characters = new ArrayList<>();
         String sql = "SELECT * FROM `character`";
